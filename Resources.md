@@ -2,7 +2,7 @@
 
 ### Data Sources
 
-[http://ucomm.stanford.edu/cds/2014#admission](Stanford)
+[Stanford Admissions](http://ucomm.stanford.edu/cds/2014#admission)
 
 ### Discussion Lists
 
