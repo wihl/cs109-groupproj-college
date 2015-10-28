@@ -26,7 +26,7 @@
 
 [Student Portfolios and The College Admissions Problem](65488447.pdf)
 
-[Beyond Correlations: Usefulness of High School GPA and Test Scores in Making College Admissions Decisions](08957347%2E2013%2E765433.pdf)
+[Beyond Correlations: Usefulness of High School GPA and Test Scores in Making College Admissions Decisions](beyondcorrelation.pdf)
 
 ### Discussion Lists
 
