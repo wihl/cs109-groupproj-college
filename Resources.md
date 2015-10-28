@@ -24,7 +24,7 @@
 
 [Comprehensive Wikipedia Article on College Admissions](https://en.wikipedia.org/wiki/College_admissions_in_the_United_States)
 
-
+[Student Portfolios and The College Admissions Problem](65488447.pdf)
 
 
 
@@ -35,4 +35,3 @@
 
 
 ### Other Sites Offering Predictions
-
