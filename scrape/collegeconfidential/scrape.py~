@@ -1,0 +1,15 @@
+import requests
+from bs4 import BeautifulSoup
+
+
+def read_thread(url):
+req = requests.get("http://talk.collegeconfidential.com/what-my-chances/1759670-actual-results-fall-2015-applicant-to-architecture-schools.html")
+
+if req.status_code != 200:
+	print "Could not reach site, Err=",req.status_code
+	exit
+soup = BeautifulSoup(req.text,"lxml")
+msgs = soup.find("div",attrs={"class":"Message"})
+for msg in msgs:
+	if msg.string is not None:
+		print msg.string
