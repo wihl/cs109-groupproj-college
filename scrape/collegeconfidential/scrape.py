@@ -3,13 +3,17 @@ import json
 import time
 from bs4 import BeautifulSoup
 
-def write_json(msgs):
+msgcount = 0 # global
+
+def write_json(threads):
+    global msgcount
     with open('messages.json','w') as outfile:
-        json.dump(msgs, outfile)
-    print len(msgs), "messages written"
+        json.dump(threads, outfile)
+    print "Total:", len(threads), "threads,",msgcount,"messages"
     return
 
 def read_thread(url):
+    global msgcount
     req = requests.get(url)
 
     print url
@@ -27,6 +31,7 @@ def read_thread(url):
     for msg in soup.find("div",attrs={"class":"Message"}):
 	if msg.string is not None:
             thread['messages'] += msg.string
+            msgcount += 1
     #print "<EOM>"
     return thread
 
