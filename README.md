@@ -2,7 +2,7 @@
 
 CS109 Group Project Fall 2015, Predicting College Admissions
 
-
+To track activity, see the [Trello Board](https://trello.com/b/eQLW599s/cs109-group-project)
 
 Where to find things:
 
