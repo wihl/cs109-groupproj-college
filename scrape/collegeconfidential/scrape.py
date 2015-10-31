@@ -3,19 +3,32 @@ import json
 import time
 from bs4 import BeautifulSoup
 
+def write_json(msgs):
+    with open('messages.json','w') as outfile:
+        json.dump(msgs, outfile)
+    print len(msgs), "messages written"
+    return
 
 def read_thread(url):
     req = requests.get(url)
 
+    print url
     if req.status_code != 200:
 	print "Could not reach site, Err=",req.status_code
 	return
     
     soup = BeautifulSoup(req.text,"lxml")
-    msgs = soup.find("div",attrs={"class":"Message"})
-    for msg in msgs:
+    # extract time of posting
+    itemHeader = soup.find("div", attrs={"class":"DiscussionHeader"})
+    firstTime = itemHeader.find("time")['datetime']
+    thread = { 'date': firstTime, 'messages':"" }
+
+    #extract msgs
+    for msg in soup.find("div",attrs={"class":"Message"}):
 	if msg.string is not None:
-            print msg.string
+            thread['messages'] += msg.string
+    #print "<EOM>"
+    return thread
 
 def search_msgs():
     # search for all messages with "actual results" in the message
@@ -25,12 +38,14 @@ def search_msgs():
         print "Could not search, Err=",req.status_code
         return
 
+    results = []
     soup = BeautifulSoup(req.text,"lxml")
-    search_results = soup.findAll("li", attrs={"class","Item-Search"})
-    for item in search_results:
+    for item in soup.findAll("li", attrs={"class","Item-Search"}):
         url = item.findAll("h3")[0].find("a",href=True)['href']
-        thread = read_thread(url)
+        results.append(read_thread(url))
         time.sleep(1)
+
+    write_json(results)
         
 
 search_msgs()
