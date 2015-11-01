@@ -1,8 +1,10 @@
 # cs109-groupproj-college
 
-CS109 Group Project Fall 2015, Predicting College Admissions
+CS109 Group Project Fall 2015 ***Predicting College Admissions***
 
-To track activity, see the [Trello Board](https://trello.com/b/eQLW599s/cs109-group-project)
+To track activity, see the [Trello Board](https://trello.com/b/eQLW599s)
+
+[Main iPython Notebook](teamivy.ipynb)
 
 Where to find things:
 
