@@ -112,11 +112,9 @@ class ApplForm:
         global studentDF, collegeDF
         i = 0
         while (i < nrows):
-            # pick a random student and college. Currently we allow duplicates
             studentID = studentDF.sample(1).studentID.iloc[0]
             collegename = collegeDF.sample(1).name.iloc[0]
             # Make sure we don't have this combination already
-            # Ref: http://stackoverflow.com/questions/13659881/count-by-unique-pair-of-columns-in-pandas
             if (self.ApplFormDF.loc[(self.ApplFormDF['studentID'] == studentID) & 
                                     (self.ApplFormDF['collegeID'] == collegename)   , 'visited' ].count() == 0): 
                 # add in a new record
