@@ -6,6 +6,8 @@ To track activity, see the [Trello Board](https://trello.com/b/eQLW599s)
 
 [Main iPython Notebook](teamivy.ipynb)
 
+[Database Sample Notebook](sampledatabase.ipynb)
+
 Where to find things:
 
 [Project Resources](Resources.md)
