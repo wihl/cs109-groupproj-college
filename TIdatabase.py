@@ -119,10 +119,11 @@ class ApplForm:
                                     (self.ApplFormDF['collegeID'] == collegename)   , 'visited' ].count() == 0): 
                 # add in a new record
                 self.ApplFormDF.loc[i] = [studentID, collegename, 
-                                      random.randint(-1,1), # earlyAppl
-                                      random.randint(-1,1), # visited
-                                      random.randint(-1,1), # acceptStatus
-                                      0.0]
+                                          random.randint(-1,1), # earlyAppl
+                                          random.randint(-1,1), # visited
+                                          random.randint(-1,1), # acceptStatus
+                                          random.random() # acceptProb
+                                          ]
                 i += 1
 
 class Application:
