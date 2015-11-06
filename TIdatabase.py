@@ -11,14 +11,14 @@ class Student:
     def __init__(self):
         global studentDF
         self.keysize = 10
+        self.factorcolumns = ['canAfford', 'female', 'MinorityGender','MinorityRace',
+                              'outofstate','international','firstinfamily','alumni',
+                              'sports','artist', 'workexp']
+        self.columnlist = ['studentID','classrank', 'admissionstest','AP','averageAP',
+                           'SATsubject', 'GPA', 'program','schooltype',
+                           'intendedgradyear'] + self.factorcolumns
         if (studentDF is None):
-            studentDF = pd.DataFrame(columns =
-                                      ['studentID','classrank', 'admissionstest','AP','averageAP',
-                                       'SATsubject', 'canAfford', 'GPA', 'female',
-                                       'MinorityGender','MinorityRace','outofstate',
-                                       'international','firstinfamily','alumni',
-                                       'sports','artist','program','workexp','schooltype',
-                                       'intendedgradyear'])
+            studentDF = pd.DataFrame(columns = self.columnlist)
 
         return
 
@@ -54,6 +54,10 @@ class Student:
         while (studentID in studentDF.studentID.values):
             studentID = self.newstudentID()
         row['studentID'] = studentID
+        # fill any missing indicator columns with 0's
+        for c in self.factorcolumns:
+            if (not c in row):
+                row[c] = 0
         return row
 
 
@@ -85,8 +89,11 @@ class Student:
                 random.random(), # AP
                 random.random(), # averageAP
                 random.random(), # SAT subject
-                random.randint(-1,1), # canAfford
                 random.random(), # GPA
+                random.randint(1,5), # program factor 
+                random.randint(1,5), # schooltype
+                random.randint(2010,2020), # grad year
+                random.randint(-1,1), # canAfford
                 random.randint(-1,1), # female
                 random.randint(-1,1), # MinorityGender
                 random.randint(-1,1), # MinorityRace
@@ -96,10 +103,7 @@ class Student:
                 random.randint(-1,1), # alumni
                 random.randint(-1,1),  # sports
                 random.randint(-1,1),  # artist
-                random.randint(1,5), # program factor
-                random.randint(-1,1), # workexp
-                random.randint(1,5), # schooltype
-                random.randint(2010,2020) # grad year
+                random.randint(-1,1) # workexp
                 ]
 
 
