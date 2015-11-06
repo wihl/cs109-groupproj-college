@@ -10,6 +10,7 @@ collegeDF = None
 class Student:
     def __init__(self):
         global studentDF
+        self.keysize = 10
         if (studentDF is None):
             studentDF = pd.DataFrame(columns =
                                       ['studentID','classrank', 'admissionstest','AP','averageAP',
@@ -20,6 +21,9 @@ class Student:
                                        'intendedgradyear'])
 
         return
+
+    def newstudentID(self):
+        return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(self.keysize))
 
     @property
     def df(self):
@@ -33,15 +37,49 @@ class Student:
             raise TypeError('Expected a Pandas DataFrame')
         studentDF = df
 
+    def cleanup(self):
+        """
+        reinitialize all the globals
+        """
+        global studentDF, collegeDF
+        studentDF = None
+        collegeDF = None
+
+    def insertrow(self, row):
+        global studentDF
+        if (not isinstance(row,dict)):
+            raise TypeError("only dicts can be used to insert")
+        studentID = self.newstudentID()
+        # check for a rare random collision until we get a unique value
+        while (studentID in studentDF.studentID.values):
+            studentID = self.newstudentID()
+        row['studentID'] = studentID
+        return row
+
+
+    def insert(self,args):
+        """
+        Insert either a single row (when a dict is passed) or a list of rows
+        """
+        global studentDF
+        rows = []
+        if (isinstance(args, dict)):
+            rows.append(self.insertrow(args))
+        elif (isinstance(args, list)):
+            for i in args:
+                rows.append(self.insertrow(i))
+        else:
+            raise TypeError("insert either a single dict or a list of dicts")
+        studentDF = studentDF.append(rows)
+
     def fillRandom(self, nrows):
         global studentDF
         """
         populate the dataframe with n random rows.
         """
-        N = 10
         for i in range(nrows):
             studentDF.loc[i] = [
-                ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(N)), # studentID
+                self.newstudentID(), # studentID
                 random.random(), # classrank
                 random.random(), # admissiontest
                 random.random(), # AP
