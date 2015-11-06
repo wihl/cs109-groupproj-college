@@ -67,14 +67,20 @@ class Student:
         """
         global studentDF
         rows = []
+        newstudentIDs = [] # TODO save the incoming studentID
         if (isinstance(args, dict)):
-            rows.append(self.insertrow(args))
+            newrow = self.insertrow(args)
+            rows.append(newrow)
+            newstudentIDs.append(newrow['studentID'])
         elif (isinstance(args, list)):
             for i in args:
-                rows.append(self.insertrow(i))
+                newrow = self.insertrow(i)
+                rows.append(newrow)
+                newstudentIDs.append(newrow['studentID'])
         else:
             raise TypeError("insert either a single dict or a list of dicts")
         studentDF = studentDF.append(rows)
+        return newstudentIDs
 
     def read(self,filename):
         global studentDF
