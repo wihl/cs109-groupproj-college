@@ -1,6 +1,7 @@
 import string
 import random as random
 import pandas as pd
+import numpy as np
 
 
 # Module globals
@@ -90,7 +91,7 @@ class Student:
         global studentDF
         return studentDF.to_csv(filename)
 
-    def fillRandom(self, nrows):
+    def fillRandom(self, nrows, nanpct = 0.0):
         global studentDF
         """
         populate the dataframe with n random rows.
@@ -119,8 +120,14 @@ class Student:
                 random.randint(0,1),  # artist
                 random.randint(0,1) # workexp
                 ]
-            # TODO: randomly insert NaNs
-
+            # Randomly insert NaNs
+            if (nanpct > 0.0):
+                ncols = int( round(len(self.columnlist) * nanpct)) + 1
+                if (ncols > len(self.columnlist)): ncols = len(self.columnlist) 
+                for c in random.sample(self.columnlist, ncols):
+                    if (c == 'studentID'): continue
+                    studentDF.loc[i,c] = np.nan
+            
 
 
 class College:
