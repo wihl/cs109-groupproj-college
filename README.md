@@ -10,6 +10,8 @@ Discussions: [Slack Domain](https://team-ivy.slack.com)
 
 [Main iPython Notebook](teamivy.ipynb)
 
+[The Datamodel](https://docs.google.com/a/g.harvard.edu/spreadsheets/d/1dm73Vmov8bhNoVRUtyg6TU-IgE7DPDVlukMkvnaCqAg/edit?usp=drive_web)
+
 [Database Sample Notebook](sampledatabase.ipynb)
 
 [Project Resources](Resources.md)
