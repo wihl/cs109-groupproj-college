@@ -1,0 +1,435 @@
+(dp0
+S'VBB'
+p1
+(S'the "base forms" of the verb "BE" (except the infinitive)'
+p2
+S'am, are '
+p3
+tp4
+sS'DPS'
+p5
+(S'possessive determiner form'
+p6
+S'your, their '
+p7
+tp8
+sS'VDG'
+p9
+(S'-ing form of the verb "DO"'
+p10
+S'doing '
+p11
+tp12
+sS'VBD'
+p13
+(S'past form of the verb "BE"'
+p14
+S'was, were '
+p15
+tp16
+sS'VBI'
+p17
+(S'infinitive of the verb "BE"'
+p18
+S'be '
+p19
+tp20
+sS'VDZ'
+p21
+(S'-s form of the verb "DO"'
+p22
+S'does '
+p23
+tp24
+sS'AV0'
+p25
+(S'adverb (unmarked)'
+p26
+S'often, well, longer, furthest '
+p27
+tp28
+sS'VBN'
+p29
+(S'past participle of the verb "BE"'
+p30
+S'been '
+p31
+tp32
+sS'VDB'
+p33
+(S'base form of the verb "DO" (except the infinitive)'
+p34
+S'do '
+p35
+tp36
+sS'VHI'
+p37
+(S'infinitive of the verb "HAVE"'
+p38
+S'have '
+p39
+tp40
+sS'VDD'
+p41
+(S'past form of the verb "DO"'
+p42
+S'did '
+p43
+tp44
+sS'CRD'
+p45
+(S'cardinal numeral'
+p46
+S'3, fifty-five, 6609 (excl one) '
+p47
+tp48
+sS'VBZ'
+p49
+(S'-s form of the verb "BE"'
+p50
+S"is, 's "
+p51
+tp52
+sS'VDI'
+p53
+(S'infinitive of the verb "DO"'
+p54
+S'do '
+p55
+tp56
+sS'VBG'
+p57
+(S'-ing form of the verb "BE"'
+p58
+S'being '
+p59
+tp60
+sS'DTQ'
+p61
+(S'wh-determiner'
+p62
+S'whose, which '
+p63
+tp64
+sS'NULL'
+p65
+(S'the null tag (for items not to be tagged)'
+p66
+S''
+p67
+tp68
+sS'NP0'
+p69
+(S'proper noun'
+p70
+S'London, Michael, Mars '
+p71
+tp72
+sS'VM0'
+p73
+(S'modal auxiliary verb'
+p74
+S"can, could, will, 'll "
+p75
+tp76
+sS'VDN'
+p77
+(S'past participle of the verb "DO"'
+p78
+S'done '
+p79
+tp80
+sS'PRF'
+p81
+(S'the preposition OF'
+p82
+S'of '
+p83
+tp84
+sS'VVZ'
+p85
+(S'-s form of lexical verb'
+p86
+S'takes, lives '
+p87
+tp88
+sS'AJ0'
+p89
+(S'adjective (unmarked)'
+p90
+S'good, old '
+p91
+tp92
+sS'VHZ'
+p93
+(S'-s form of the verb "HAVE"'
+p94
+S"has, 's "
+p95
+tp96
+sS'POS'
+p97
+(S'the possessive (or genitive morpheme)'
+p98
+S"'s or ' "
+p99
+tp100
+sS'VHD'
+p101
+(S'past tense form of the verb "HAVE"'
+p102
+S"had, 'd "
+p103
+tp104
+sS'VVN'
+p105
+(S'past participle form of lex. verb'
+p106
+S'taken, lived '
+p107
+tp108
+sS'CJT'
+p109
+(S'the conjunction THAT'
+p110
+S'that '
+p111
+tp112
+sS'VVI'
+p113
+(S'infinitive of lexical verb'
+p114
+S'take, live '
+p115
+tp116
+sS'VVG'
+p117
+(S'-ing form of lexical verb'
+p118
+S'taking, living '
+p119
+tp120
+sS'VHB'
+p121
+(S'base form of the verb "HAVE" (except the infinitive)'
+p122
+S'have '
+p123
+tp124
+sS'VVB'
+p125
+(S'base form of lexical verb (except the infinitive)'
+p126
+S'take, live '
+p127
+tp128
+sS'PRP'
+p129
+(S'preposition (except for OF)'
+p130
+S'for, above, to '
+p131
+tp132
+sS'XX0'
+p133
+(S"the negative NOT or N'T"
+p134
+S'not '
+p135
+tp136
+sS'EX0'
+p137
+(S'existential THERE'
+p138
+S'there '
+p139
+tp140
+sS'CJC'
+p141
+(S'coordinating conjunction'
+p142
+S'and, or '
+p143
+tp144
+sS'AJS'
+p145
+(S'superlative adjective'
+p146
+S'best, oldest '
+p147
+tp148
+sS'VHG'
+p149
+(S'-ing form of the verb "HAVE"'
+p150
+S'having '
+p151
+tp152
+sS'ZZ0'
+p153
+(S'alphabetical symbol'
+p154
+S'A, B, c, d '
+p155
+tp156
+sS'UNC'
+p157
+(S'"unclassified" items which are not words of the English lexicon'
+p158
+g67
+tp159
+sS'CJS'
+p160
+(S'subordinating conjunction'
+p161
+S'although, when '
+p162
+tp163
+sS'AJC'
+p164
+(S'comparative adjective'
+p165
+S'better, older '
+p166
+tp167
+sS'NN2'
+p168
+(S'plural noun'
+p169
+S'pencils, geese '
+p170
+tp171
+sS'NN1'
+p172
+(S'singular noun'
+p173
+S'pencil, goose '
+p174
+tp175
+sS'NN0'
+p176
+(S'noun (neutral for number)'
+p177
+S'aircraft, data '
+p178
+tp179
+sS'PUL'
+p180
+(S'punctuation'
+p181
+S'left bracket - ( or [ ) '
+p182
+tp183
+sS'PNX'
+p184
+(S'reflexive pronoun'
+p185
+S'itself, ourselves '
+p186
+tp187
+sS'PUN'
+p188
+(S'punctuation'
+p189
+S'general mark - . ! , : ; - ? ... '
+p190
+tp191
+sS'VVD'
+p192
+(S'past tense form of lexical verb'
+p193
+S'took, lived '
+p194
+tp195
+sS'ITJ'
+p196
+(S'interjection or other isolate'
+p197
+S'oh, yes, mhm '
+p198
+tp199
+sS'PNQ'
+p200
+(S'wh-pronoun'
+p201
+S'who, whoever '
+p202
+tp203
+sS'PNP'
+p204
+(S'personal pronoun'
+p205
+S'you, them, ours '
+p206
+tp207
+sS'TO0'
+p208
+(S'infinitive marker TO'
+p209
+S'to '
+p210
+tp211
+sS'AVP'
+p212
+(S'adverb particle'
+p213
+S'up, off, out '
+p214
+tp215
+sS'AVQ'
+p216
+(S'wh-adverb'
+p217
+S'when, how, why '
+p218
+tp219
+sS'PNI'
+p220
+(S'indefinite pronoun'
+p221
+S'none, everything '
+p222
+tp223
+sS'VHN'
+p224
+(S'past participle of the verb "HAVE"'
+p225
+S'had '
+p226
+tp227
+sS'AT0'
+p228
+(S'article'
+p229
+S'THE, A, AN '
+p230
+tp231
+sS'ORD'
+p232
+(S'ordinal'
+p233
+S'sixth, 77th, last '
+p234
+tp235
+sS'DT0'
+p236
+(S'general determiner'
+p237
+S'these, some '
+p238
+tp239
+sS'PUQ'
+p240
+(S'punctuation'
+p241
+S'quotation mark - ` \' " '
+p242
+tp243
+sS'PUR'
+p244
+(S'punctuation'
+p245
+S'right bracket - ) or ] '
+p246
+tp247
+s.

@@ -1,0 +1,1584 @@
+(dp0
+S'BE'
+p1
+(S"verb 'to be', infinitive or imperative"
+p2
+S'be '
+p3
+tp4
+sS'VBG+TO'
+p5
+(S'verb, present participle + infinitival to'
+p6
+S'gonna '
+p7
+tp8
+sS'WPS+HVZ'
+p9
+(S"WH-pronoun, nominative + verb 'to have', present tense, 3rd person singular"
+p10
+S"who's that's "
+p11
+tp12
+sS'WRB+MD'
+p13
+(S'WH-adverb + modal auxillary'
+p14
+S"where'd "
+p15
+tp16
+sS'NP$'
+p17
+(S'noun, singular, proper, genitive'
+p18
+S"Green's Landis' Smith's Carreon's Allison's Boston's Spahn's Willie's Mickey's Milwaukee's Mays' Howsam's Mantle's Shaw's Wagner's Rickey's Shea's Palmer's Arnold's Broglio's ... "
+p19
+tp20
+sS'BEZ*'
+p21
+(S"verb 'to be', present tense, 3rd person singular, negated"
+p22
+S"isn't ain't "
+p23
+tp24
+sS'CS'
+p25
+(S'conjunction, subordinating'
+p26
+S"that as after whether before while like because if since for than altho until so unless though providing once lest s'posin' till whereas whereupon supposing tho' albeit then so's 'fore "
+p27
+tp28
+sS'WRB+BER'
+p29
+(S"WH-adverb + verb 'to be', present, 2nd person singular or all persons plural"
+p30
+S"where're "
+p31
+tp32
+sS'WDT'
+p33
+(S'WH-determiner'
+p34
+S'which what whatever whichever whichever-the-hell '
+p35
+tp36
+sS'NP+HVZ'
+p37
+(S"noun, singular, proper + verb 'to have', present tense, 3rd person singular"
+p38
+S"Bill's Guardino's Celie's Skolman's Crosson's Tim's Wally's "
+p39
+tp40
+sS'JJ'
+p41
+(S'adjective'
+p42
+S'ecent over-all possible hard-fought favorable hard meager fit such widespread outmoded inadequate ambiguous grand clerical effective orderly federal foster general proportionate ... '
+p43
+tp44
+sS'WRB+BEZ'
+p45
+(S"WH-adverb + verb 'to be', present, 3rd person singular"
+p46
+S"how's where's "
+p47
+tp48
+sS'WDT+DOD'
+p49
+(S"WH-determiner + verb 'to do', past tense"
+p50
+S"what'd "
+p51
+tp52
+sS'AP$'
+p53
+(S'determiner/pronoun, post-determiner, genitive'
+p54
+S"other's "
+p55
+tp56
+sS'WPS+HVD'
+p57
+(S"WH-pronoun, nominative + verb 'to have', past tense"
+p58
+S"who'd "
+p59
+tp60
+sS'PPS'
+p61
+(S'pronoun, personal, nominative, 3rd person singular'
+p62
+S'it he she thee '
+p63
+tp64
+sS'NR$'
+p65
+(S'noun, singular, adverbial, genitive'
+p66
+S"Saturday's Monday's yesterday's tonight's tomorrow's Sunday's Wednesday's Friday's today's Tuesday's West's Today's South's "
+p67
+tp68
+sS'WPS+BEZ'
+p69
+(S"WH-pronoun, nominative + verb 'to be', present, 3rd person singular"
+p70
+S"that's who's "
+p71
+tp72
+sS'('
+p73
+(S'opening parenthesis'
+p74
+S'( '
+p75
+tp76
+sS'VBD'
+p77
+(S'verb, past tense'
+p78
+S'said produced took recommended commented urged found added praised charged listed became announced brought attended wanted voted defeated received got stood shot scheduled feared promised made ... '
+p79
+tp80
+sS'PPSS+BER'
+p81
+(S"pronoun, personal, nominative, not 3rd person singular + verb 'to be', present tense, 2nd person singular or all persons plural"
+p82
+S"we're you're they're "
+p83
+tp84
+sS'DT+MD'
+p85
+(S'determiner/pronoun + modal auxillary'
+p86
+S"that'll this'll "
+p87
+tp88
+sS'NNS$'
+p89
+(S'noun, plural, common, genitive'
+p90
+S"taxpayers' children's members' States' women's cutters' motorists' steelmakers' hours' Nations' lawyers' prisoners' architects' tourists' Employers' secretaries' Rogues' ... "
+p91
+tp92
+sS'PPSS+BEM'
+p93
+(S"pronoun, personal, nominative, not 3rd person singular + verb 'to be', present tense, 1st person singular"
+p94
+S"I'm Ahm "
+p95
+tp96
+sS'FW-PP$'
+p97
+(S'foreign word: determiner, possessive'
+p98
+S'mea mon deras vos '
+p99
+tp100
+sS'RB'
+p101
+(S'adverb'
+p102
+S'only often generally also nevertheless upon together back newly no likely meanwhile near then heavily there apparently yet outright fully aside consistently specifically formally ever just ... '
+p103
+tp104
+sS'RN'
+p105
+(S'adverb, nominal'
+p106
+S'here afar then '
+p107
+tp108
+sS'FW-RB+CC'
+p109
+(S'foreign word: adverb + conjunction, coordinating'
+p110
+S'forisque '
+p111
+tp112
+sS'NNS'
+p113
+(S'noun, plural, common'
+p114
+S'irregularities presentments thanks reports voters laws legislators years areas adjustments chambers $100 bonds courts sales details raises sessions members congressmen votes polls calls ... '
+p115
+tp116
+sS'PPSS+MD'
+p117
+(S'pronoun, personal, nominative, not 3rd person singular + modal auxillary'
+p118
+S"you'll we'll I'll we'd I'd they'll they'd you'd "
+p119
+tp120
+sS'FW-PPS'
+p121
+(S'foreign word: pronoun, personal, nominative, 3rd person singular'
+p122
+S'il '
+p123
+tp124
+sS'FW-AT+NN'
+p125
+(S'foreign word: article + noun, singular, common'
+p126
+S"l'orchestre l'identite l'arcade l'ange l'assistance l'activite L'Universite l'independance L'Union L'Unita l'osservatore "
+p127
+tp128
+sS'TO+VB'
+p129
+(S'infinitival to + verb, infinitive'
+p130
+S"t'jawn t'lah "
+p131
+tp132
+sS'DOD*'
+p133
+(S"verb 'to do', past tense, negated"
+p134
+S"didn't "
+p135
+tp136
+sS'NN$'
+p137
+(S'noun, singular, common, genitive'
+p138
+S"season's world's player's night's chapter's golf's football's baseball's club's U.'s coach's bride's bridegroom's board's county's firm's company's superintendent's mob's Navy's ... "
+p139
+tp140
+sS'NPS'
+p141
+(S'noun, plural, proper'
+p142
+S'Chases Aderholds Chapelles Armisteads Lockies Carbones French Marskmen Toppers Franciscans Romans Cadillacs Masons Blacks Catholics British Dixiecrats Mississippians Congresses ... '
+p143
+tp144
+sS'MD*'
+p145
+(S'modal auxillary, negated'
+p146
+S"cannot couldn't wouldn't can't won't shouldn't shan't mustn't musn't "
+p147
+tp148
+sS'PPLS'
+p149
+(S'pronoun, plural, reflexive'
+p150
+S'themselves ourselves yourselves '
+p151
+tp152
+sS'IN+IN'
+p153
+(S'preposition, hyphenated pair'
+p154
+S"f'ovuh "
+p155
+tp156
+sS'FW-CS'
+p157
+(S'foreign word: conjunction, subordinating'
+p158
+S'bevor quam ma '
+p159
+tp160
+sS'FW-AT+NP'
+p161
+(S'foreign word: article + noun, singular, proper'
+p162
+S"L'Astree L'Imperiale "
+p163
+tp164
+sS'FW-PPSS'
+p165
+(S'foreign word: pronoun, personal, nominative, not 3rd person singular'
+p166
+S'ich vous sie je '
+p167
+tp168
+sS'FW-PPL'
+p169
+(S'foreign word: pronoun, singular, reflexive'
+p170
+S'se '
+p171
+tp172
+sS'FW-DT+BEZ'
+p173
+(S"foreign word: determiner + verb 'to be', present tense, 3rd person singular"
+p174
+S"c'est "
+p175
+tp176
+sS'FW-PPO'
+p177
+(S'pronoun, personal, accusative'
+p178
+S'lui me moi mi '
+p179
+tp180
+sS'--'
+p181
+(S'dash'
+p182
+S'-- '
+p183
+tp184
+sS'OD'
+p185
+(S'numeral, ordinal'
+p186
+S'first 13th third nineteenth 2d 61st second sixth eighth ninth twenty-first eleventh 50th eighteenth- Thirty-ninth 72nd 1/20th twentieth mid-19th thousandth 350th sixteenth 701st ... '
+p187
+tp188
+sS'PP$$'
+p189
+(S'pronoun, possessive'
+p190
+S'ours mine his hers theirs yours '
+p191
+tp192
+sS'NNS+MD'
+p193
+(S'noun, plural, common + modal auxillary'
+p194
+S"duds'd oystchers'll "
+p195
+tp196
+sS'PN+HVZ'
+p197
+(S"pronoun, nominal + verb 'to have', present tense, 3rd person singular"
+p198
+S"nobody's somebody's one's "
+p199
+tp200
+sS'PPSS+HVD'
+p201
+(S"pronoun, personal, nominative, not 3rd person singular + verb 'to have', past tense"
+p202
+S"I'd you'd we'd they'd "
+p203
+tp204
+sS'FW-DT'
+p205
+(S'foreign word: determiner/pronoun, singular'
+p206
+S'hoc '
+p207
+tp208
+sS'HVZ*'
+p209
+(S"verb 'to have', present tense, 3rd person singular, negated"
+p210
+S"hasn't ain't "
+p211
+tp212
+sS'RBR+CS'
+p213
+(S'adverb, comparative + conjunction, coordinating'
+p214
+S"more'n "
+p215
+tp216
+sS'VB+AT'
+p217
+(S'verb, base: uninflected present or infinitive + article'
+p218
+S'wanna '
+p219
+tp220
+sS'NN+HVD'
+p221
+(S"noun, singular, common + verb 'to have', past tense"
+p222
+S"Pa'd "
+p223
+tp224
+sS'DTI'
+p225
+(S'determiner/pronoun, singular or plural'
+p226
+S'any some '
+p227
+tp228
+sS'PPS+HVZ'
+p229
+(S"pronoun, personal, nominative, 3rd person singular + verb 'to have', present tense, 3rd person singular"
+p230
+S"it's he's she's "
+p231
+tp232
+sS'BEN'
+p233
+(S"verb 'to be', past participle"
+p234
+S'been '
+p235
+tp236
+sS'BEM'
+p237
+(S"verb 'to be', present tense, 1st person singular"
+p238
+S'am '
+p239
+tp240
+sS'EX+BEZ'
+p241
+(S"existential there + verb 'to be', present tense, 3rd person singular"
+p242
+S"there's "
+p243
+tp244
+sS'HV'
+p245
+(S"verb 'to have', uninflected present tense, infinitive or imperative"
+p246
+S'have hast '
+p247
+tp248
+sS'BEG'
+p249
+(S"verb 'to be', present participle or gerund"
+p250
+S'being '
+p251
+tp252
+sS'BED'
+p253
+(S"verb 'to be', past tense, 2nd person singular or all persons plural"
+p254
+S'were '
+p255
+tp256
+sS'JJR'
+p257
+(S'adjective, comparative'
+p258
+S'greater older further earlier later freer franker wider better deeper firmer tougher faster higher bigger worse younger lighter nicer slower happier frothier Greater newer Elder ... '
+p259
+tp260
+sS'BEZ'
+p261
+(S"verb 'to be', present tense, 3rd person singular"
+p262
+S'is '
+p263
+tp264
+sS'DTX'
+p265
+(S'determiner, pronoun or double conjunction'
+p266
+S'neither either one '
+p267
+tp268
+sS'FW-WDT'
+p269
+(S'foreign word: WH-determiner'
+p270
+S'quo qua quod que quok '
+p271
+tp272
+sS'BER'
+p273
+(S"verb 'to be', present tense, 2nd person singular or all persons plural"
+p274
+S'are art '
+p275
+tp276
+sS'FW-RB'
+p277
+(S'foreign word: adverb'
+p278
+S'bas assai deja um wiederum cito velociter vielleicht simpliciter non zu domi nuper sic forsan olim oui semper tout despues hors '
+p279
+tp280
+sS'WRB+DOD'
+p281
+(S"WH-adverb + verb 'to do', past tense"
+p282
+S"where'd how'd "
+p283
+tp284
+sS'DTS+BEZ'
+p285
+(S"pronoun, plural + verb 'to be', present tense, 3rd person singular"
+p286
+S"them's "
+p287
+tp288
+sS'NN+HVZ'
+p289
+(S"noun, singular, common + verb 'to have', present tense, 3rd person singular"
+p290
+S"guy's Knife's boat's summer's rain's company's "
+p291
+tp292
+sS'BEM*'
+p293
+(S"verb 'to be', present tense, 1st person singular, negated"
+p294
+S"ain't "
+p295
+tp296
+sS'FW-BEZ'
+p297
+(S"foreign word: verb 'to be', present tense, 3rd person singular"
+p298
+S'ist est '
+p299
+tp300
+sS'FW-CC'
+p301
+(S'foreign word: conjunction, coordinating'
+p302
+S'et ma mais und aber och nec y '
+p303
+tp304
+sS'PP$'
+p305
+(S'determiner, possessive'
+p306
+S'our its his their my your her out thy mine thine '
+p307
+tp308
+sS'EX+HVZ'
+p309
+(S"existential there + verb 'to have', present tense, 3rd person singular"
+p310
+S"there's "
+p311
+tp312
+sS'FW-CD'
+p313
+(S'foreign word: numeral, cardinal'
+p314
+S'une cinq deux sieben unam zwei '
+p315
+tp316
+sS'FW-BER'
+p317
+(S"foreign word: verb 'to be', present tense, 2nd person singular or all persons plural"
+p318
+S'sind sunt etes '
+p319
+tp320
+sS'EX+HVD'
+p321
+(S"existential there + verb 'to have', past tense"
+p322
+S"there'd "
+p323
+tp324
+sS'WQL'
+p325
+(S'WH-qualifier'
+p326
+S'however how '
+p327
+tp328
+sS'JJR+CS'
+p329
+(S'adjective + conjunction, coordinating'
+p330
+S"lighter'n "
+p331
+tp332
+sS'NN+MD'
+p333
+(S'noun, singular, common + modal auxillary'
+p334
+S"cowhand'd sun'll "
+p335
+tp336
+sS'BEDZ'
+p337
+(S"verb 'to be', past tense, 1st and 3rd person singular"
+p338
+S'was '
+p339
+tp340
+sS'NP+BEZ'
+p341
+(S"noun, singular, proper + verb 'to be', present tense, 3rd person singular"
+p342
+S"W.'s Ike's Mack's Jack's Kate's Katharine's Black's Arthur's Seaton's Buckhorn's Breed's Penny's Rob's Kitty's Blackwell's Myra's Wally's Lucille's Springfield's Arlene's "
+p343
+tp344
+sS'PN'
+p345
+(S'pronoun, nominal'
+p346
+S'none something everything one anyone nothing nobody everybody everyone anybody anything someone no-one nothin '
+p347
+tp348
+sS'BER*'
+p349
+(S"verb 'to be', present tense, 2nd person singular or all persons plural, negated"
+p350
+S"aren't ain't "
+p351
+tp352
+sS'WPS+MD'
+p353
+(S'WH-pronoun, nominative + modal auxillary'
+p354
+S"who'll that'd who'd that'll "
+p355
+tp356
+sS'WP$'
+p357
+(S'WH-pronoun, genitive'
+p358
+S'whose whosever '
+p359
+tp360
+sS'BED*'
+p361
+(S"verb 'to be', past tense, 2nd person singular or all persons plural, negated"
+p362
+S"weren't "
+p363
+tp364
+sS'VBN+TO'
+p365
+(S'verb, past participle + infinitival to'
+p366
+S'gotta '
+p367
+tp368
+sS'WRB+IN'
+p369
+(S'WH-adverb + preposition'
+p370
+S"why'n "
+p371
+tp372
+sS'FW-UH'
+p373
+(S'foreign word: interjection'
+p374
+S'sayonara bien adieu arigato bonjour adios bueno tchalo ciao o '
+p375
+tp376
+sS'EX'
+p377
+(S'existential there'
+p378
+S'there '
+p379
+tp380
+sS'PPSS+BEZ'
+p381
+(S"pronoun, personal, nominative, not 3rd person singular + verb 'to be', present tense, 3rd person singular"
+p382
+S"you's "
+p383
+tp384
+sS'WPS'
+p385
+(S'WH-pronoun, nominative'
+p386
+S'that who whoever whosoever what whatsoever '
+p387
+tp388
+sS'VBZ'
+p389
+(S'verb, present tense, 3rd person singular'
+p390
+S'deserves believes receives takes goes expires says opposes starts permits expects thinks faces votes teaches holds calls fears spends collects backs eliminates sets flies gives seeks reads ... '
+p391
+tp392
+sS'MD'
+p393
+(S'modal auxillary'
+p394
+S'should may might will would must can could shall ought need wilt '
+p395
+tp396
+sS'FW-TO+VB'
+p397
+(S'foreign word: infinitival to + verb, infinitive'
+p398
+S"d'entretenir "
+p399
+tp400
+sS'FW-BE'
+p401
+(S"foreign word: verb 'to be', infinitive or imperative"
+p402
+S'sit '
+p403
+tp404
+sS'VB+JJ'
+p405
+(S'verb, base: uninflected present, imperative or infinitive + adjective'
+p406
+S'die-dead '
+p407
+tp408
+sS'DT$'
+p409
+(S'determiner/pronoun, singular, genitive'
+p410
+S"another's "
+p411
+tp412
+sS'AP+AP'
+p413
+(S'determiner/pronoun, post-determiner, hyphenated pair'
+p414
+S'many-much '
+p415
+tp416
+sS'FW-VBN'
+p417
+(S'foreign word: verb, past participle'
+p418
+S'vue verstrichen rasa verboten engages '
+p419
+tp420
+sS'PPS+BEZ'
+p421
+(S"pronoun, personal, nominative, 3rd person singular + verb 'to be', present tense, 3rd person singular"
+p422
+S"it's he's she's "
+p423
+tp424
+sS'MD+TO'
+p425
+(S'modal auxillary + infinitival to'
+p426
+S'oughta '
+p427
+tp428
+sS'CD$'
+p429
+(S'numeral, cardinal, genitive'
+p430
+S"1960's 1961's .404's "
+p431
+tp432
+sS'HV*'
+p433
+(S"verb 'to have', uninflected present tense or imperative, negated"
+p434
+S"haven't ain't "
+p435
+tp436
+sS'VBG'
+p437
+(S'verb, present participle or gerund'
+p438
+S'modernizing improving purchasing Purchasing lacking enabling pricing keeping getting picking entering voting warning making strengthening setting neighboring attending participating moving ... '
+p439
+tp440
+sS'RB+CS'
+p441
+(S'adverb + conjunction, coordinating'
+p442
+S"well's soon's "
+p443
+tp444
+sS'IN'
+p445
+(S'preposition'
+p446
+S'of in for by considering to on among at through with under into regarding than since despite according per before toward against as after during including between without except upon out over ... '
+p447
+tp448
+sS'VBN'
+p449
+(S'verb, past participle'
+p450
+S'conducted charged won received studied revised operated accepted combined experienced recommended effected granted seen protected adopted retarded notarized selected composed gotten printed ... '
+p451
+tp452
+sS'DOD'
+p453
+(S"verb 'to do', past tense"
+p454
+S'did done '
+p455
+tp456
+sS','
+p457
+(S'comma'
+p458
+S', '
+p459
+tp460
+sS'DOZ'
+p461
+(S"verb 'to do', present tense, 3rd person singular"
+p462
+S'does '
+p463
+tp464
+sS'FW-PPSS+HV'
+p465
+(S"foreign word: pronoun, personal, nominative, not 3rd person singular + verb 'to have', present tense, not 3rd person singular"
+p466
+S"j'ai "
+p467
+tp468
+sS'EX+MD'
+p469
+(S'existential there + modal auxillary'
+p470
+S"there'll there'd "
+p471
+tp472
+sS'WDT+DO+PPS'
+p473
+(S"WH-determiner + verb 'to do', uninflected present tense + pronoun, personal, nominative, not 3rd person singular"
+p474
+S'whaddya '
+p475
+tp476
+sS'FW-HV'
+p477
+(S"foreign word: verb 'to have', present tense, not 3rd person singular"
+p478
+S'habe '
+p479
+tp480
+sS'NN+NN'
+p481
+(S'noun, singular, common, hyphenated pair'
+p482
+S'stomach-belly '
+p483
+tp484
+sS'JJ$'
+p485
+(S'adjective, genitive'
+p486
+S"Great's "
+p487
+tp488
+sS'FW-AT'
+p489
+(S'foreign word: article'
+p490
+S'la le el un die der ein keine eine das las les Il '
+p491
+tp492
+sS'NN'
+p493
+(S'noun, singular, common'
+p494
+S'failure burden court fire appointment awarding compensation Mayor interim committee fact effect airport management surveillance jail doctor intern extern night weekend duty legislation Tax Office ... '
+p495
+tp496
+sS'FW-PN'
+p497
+(S'foreign word: pronoun, nominal'
+p498
+S'hoc '
+p499
+tp500
+sS'*'
+p501
+(S'negator'
+p502
+S"not n't "
+p503
+tp504
+sS'.'
+p505
+(S'sentence terminator'
+p506
+S'. ? ; ! : '
+p507
+tp508
+sS'WPO'
+p509
+(S'WH-pronoun, accusative'
+p510
+S'whom that who '
+p511
+tp512
+sS'WRB+DOZ'
+p513
+(S"WH-adverb + verb 'to do', present tense, 3rd person singular"
+p514
+S"how's "
+p515
+tp516
+sS'FW-NNS'
+p517
+(S'foreign word: noun, plural, common'
+p518
+S'al culpas vopos boites haflis kolkhozes augen tyrannis alpha-beta-gammas metis banditos rata phis negociants crus Einsatzkommandos kamikaze wohaws sabinas zorrillas palazzi engages coureurs corroborees yori Ubermenschen ... '
+p519
+tp520
+sS'NP'
+p521
+(S'noun, singular, proper'
+p522
+S'Fulton Atlanta September-October Durwood Pye Ivan Allen Jr. Jan. Alpharetta Grady William B. Hartsfield Pearl Williams Aug. Berry J. M. Cheshire Griffin Opelika Ala. E. Pelham Snodgrass ... '
+p523
+tp524
+sS'NR'
+p525
+(S'noun, singular, adverbial'
+p526
+S'Friday home Wednesday Tuesday Monday Sunday Thursday yesterday tomorrow tonight West East Saturday west left east downtown north northeast southeast northwest North South right ... '
+p527
+tp528
+sS':'
+p529
+(S'colon'
+p530
+S': '
+p531
+tp532
+sS'FW-PPO+IN'
+p533
+(S'foreign word: pronoun, personal, accusative + preposition'
+p534
+S'mecum tecum '
+p535
+tp536
+sS'FW-NN$'
+p537
+(S'foreign word: noun, singular, common, genitive'
+p538
+S"corporis intellectus arte's dei aeternitatis senioritatis curiae patronne's chambre's "
+p539
+tp540
+sS'WDT+BER'
+p541
+(S"WH-determiner + verb 'to be', present tense, 2nd person singular or all persons plural"
+p542
+S"what're "
+p543
+tp544
+sS'FW-JJ'
+p545
+(S'foreign word: adjective'
+p546
+S'avant Espagnol sinfonica Siciliana Philharmonique grand publique haute noire bouffe Douce meme humaine bel serieuses royaux anticus presto Sovietskaya Bayerische comique schwarzen ... '
+p547
+tp548
+sS'CC'
+p549
+(S'conjunction, coordinating'
+p550
+S"and or but plus & either neither nor yet 'n' and/or minus an' "
+p551
+tp552
+sS'WDT+BEZ'
+p553
+(S"WH-determiner + verb 'to be', present tense, 3rd person singular"
+p554
+S"what's "
+p555
+tp556
+sS'RP+IN'
+p557
+(S'adverb, particle + preposition'
+p558
+S"out'n outta "
+p559
+tp560
+sS'CD'
+p561
+(S'numeral, cardinal'
+p562
+S'two one 1 four 2 1913 71 74 637 1937 8 five three million 87-31 29-5 seven 1,119 fifty-three 7.5 billion hundred 125,000 1,700 60 100 six ... '
+p563
+tp564
+sS'DT+BEZ'
+p565
+(S"determiner/pronoun + verb 'to be', present tense, 3rd person singular"
+p566
+S"that's "
+p567
+tp568
+sS'PPS+MD'
+p569
+(S'pronoun, personal, nominative, 3rd person singular + modal auxillary'
+p570
+S"he'll she'll it'll he'd it'd she'd "
+p571
+tp572
+sS'RP'
+p573
+(S'adverb, particle'
+p574
+S'up out off down over on in about through across after '
+p575
+tp576
+sS'BEDZ*'
+p577
+(S"verb 'to be', past tense, 1st and 3rd person singular, negated"
+p578
+S"wasn't "
+p579
+tp580
+sS'DO+PPSS'
+p581
+(S"verb 'to do', past or present tense + pronoun, personal, nominative, not 3rd person singular"
+p582
+S"d'you "
+p583
+tp584
+sS'DO*'
+p585
+(S"verb 'to do', uninflected present tense or imperative, negated"
+p586
+S"don't "
+p587
+tp588
+sS'MD+PPSS'
+p589
+(S'modal auxillary + pronoun, personal, nominative, not 3rd person singular'
+p590
+S'willya '
+p591
+tp592
+sS'HVN'
+p593
+(S"verb 'to have', past participle"
+p594
+S'had '
+p595
+tp596
+sS'WRB+DO'
+p597
+(S"WH-adverb + verb 'to do', present, not 3rd person singular"
+p598
+S'howda '
+p599
+tp600
+sS'FW-VBZ'
+p601
+(S'foreign word: verb, present tense, 3rd person singular'
+p602
+S'gouverne sinkt sigue diapiace '
+p603
+tp604
+sS'JJT'
+p605
+(S'adjective, superlative'
+p606
+S'best largest coolest calmest latest greatest earliest simplest strongest newest fiercest unhappiest worst youngest worthiest fastest hottest fittest lowest finest smallest staunchest ... '
+p607
+tp608
+sS'JJS'
+p609
+(S'adjective, semantically superlative'
+p610
+S'top chief principal northernmost master key head main tops utmost innermost foremost uppermost paramount topmost '
+p611
+tp612
+sS'HVD'
+p613
+(S"verb 'to have', past tense"
+p614
+S'had '
+p615
+tp616
+sS'HVG'
+p617
+(S"verb 'to have', present participle or gerund"
+p618
+S'having '
+p619
+tp620
+sS'HVZ'
+p621
+(S"verb 'to have', present tense, 3rd person singular"
+p622
+S'has hath '
+p623
+tp624
+sS'FW-VBD'
+p625
+(S'foreign word: verb, past tense'
+p626
+S'stabat peccavi audivi '
+p627
+tp628
+sS'VB+TO'
+p629
+(S'verb, base: uninflected present, imperative or infinitive + infinitival to'
+p630
+S'wanta wanna '
+p631
+tp632
+sS'FW-VBG'
+p633
+(S'foreign word: verb, present participle or gerund'
+p634
+S'nolens volens appellant seq. obliterans servanda dicendi delenda '
+p635
+tp636
+sS'FW-JJT'
+p637
+(S'foreign word: adjective, superlative'
+p638
+S'optimo '
+p639
+tp640
+sS'FW-JJR'
+p641
+(S'foreign word: adjective, comparative'
+p642
+S'fortiori '
+p643
+tp644
+sS'DO'
+p645
+(S"verb 'to do', uninflected present tense, infinitive or imperative"
+p646
+S'do dost '
+p647
+tp648
+sS'VB+VB'
+p649
+(S'verb, base: uninflected present, imperative or infinitive; hypenated pair'
+p650
+S'say-speak '
+p651
+tp652
+sS'FW-DTS'
+p653
+(S'foreign word: determiner/pronoun, plural'
+p654
+S'haec '
+p655
+tp656
+sS'FW-*'
+p657
+(S'foreign word: negator'
+p658
+S'pas non ne '
+p659
+tp660
+sS'VB+RP'
+p661
+(S'verb, imperative + adverbial particle'
+p662
+S"g'ahn c'mon "
+p663
+tp664
+sS'NPS$'
+p665
+(S'noun, plural, proper, genitive'
+p666
+S"Republicans' Orioles' Birds' Yanks' Redbirds' Bucs' Yankees' Stevenses' Geraghtys' Burkes' Wackers' Achaeans' Dresbachs' Russians' Democrats' Gershwins' Adventists' Negroes' Catholics' ... "
+p667
+tp668
+sS'RB+BEZ'
+p669
+(S"adverb + verb 'to be', present tense, 3rd person singular"
+p670
+S"here's there's "
+p671
+tp672
+sS'PPSS'
+p673
+(S'pronoun, personal, nominative, not 3rd person singular'
+p674
+S"they we I you ye thou you'uns "
+p675
+tp676
+sS'FW-NPS'
+p677
+(S'foreign word: noun, plural, proper'
+p678
+S'Svenskarna Atlantes Dieux '
+p679
+tp680
+sS'DTS'
+p681
+(S'determiner/pronoun, plural'
+p682
+S'these those them '
+p683
+tp684
+sS'VB+IN'
+p685
+(S'verb, base: uninflected present, imperative or infinitive + preposition'
+p686
+S'lookit '
+p687
+tp688
+sS'WDT+BER+PP'
+p689
+(S"WH-determiner + verb 'to be', present, 2nd person singular or all persons plural + pronoun, personal, nominative, not 3rd person singular"
+p690
+S'whaddya '
+p691
+tp692
+sS'FW-VB'
+p693
+(S'foreign word: verb, present tense, not 3rd person singular, imperative or infinitive'
+p694
+S"nolo contendere vive fermate faciunt esse vade noli tangere dites duces meminisse iuvabit gosaimasu voulez habla ksu'u'peli'afo lacheln miuchi say allons strafe portant "
+p695
+tp696
+sS'WRB'
+p697
+(S'WH-adverb'
+p698
+S'however when where why whereby wherever how whenever whereon wherein wherewith wheare wherefore whereof howsabout '
+p699
+tp700
+sS'DT'
+p701
+(S'determiner/pronoun, singular'
+p702
+S"this each another that 'nother "
+p703
+tp704
+sS'PN$'
+p705
+(S'pronoun, nominal, genitive'
+p706
+S"one's someone's anybody's nobody's everybody's anyone's everyone's "
+p707
+tp708
+sS'PN+BEZ'
+p709
+(S"pronoun, nominal + verb 'to be', present tense, 3rd person singular"
+p710
+S"nothing's everything's somebody's nobody's someone's "
+p711
+tp712
+sS'FW-IN+NP'
+p713
+(S'foreign word: preposition + noun, singular, proper'
+p714
+S"d'Yquem d'Eiffel "
+p715
+tp716
+sS'PPSS+BEZ*'
+p717
+(S"pronoun, personal, nominative, not 3rd person singular + verb 'to be', present tense, 3rd person singular, negated"
+p718
+S"'tain't "
+p719
+tp720
+sS')'
+p721
+(S'closing parenthesis'
+p722
+S') '
+p723
+tp724
+sS'FW-PPL+VBZ'
+p725
+(S'foreign word: pronoun, singular, reflexive + verb, present tense, 3rd person singular'
+p726
+S"s'excuse s'accuse "
+p727
+tp728
+sS'PPO'
+p729
+(S'pronoun, personal, accusative'
+p730
+S"them it him me us you 'em her thee we'uns "
+p731
+tp732
+sS'WDT+HVZ'
+p733
+(S"WH-determiner + verb 'to have', present tense, 3rd person singular"
+p734
+S"what's "
+p735
+tp736
+sS'PPL'
+p737
+(S'pronoun, singular, reflexive'
+p738
+S'itself himself myself yourself herself oneself ownself '
+p739
+tp740
+sS'NN+BEZ'
+p741
+(S"noun, singular, common + verb 'to be', present tense, 3rd person singular"
+p742
+S"water's camera's sky's kid's Pa's heat's throat's father's money's undersecretary's granite's level's wife's fat's Knife's fire's name's hell's leg's sun's roulette's cane's guy's kind's baseball's ... "
+p743
+tp744
+sS'TO'
+p745
+(S'infinitival to'
+p746
+S"to t' "
+p747
+tp748
+sS'PPSS+VB'
+p749
+(S"pronoun, personal, nominative, not 3rd person singular + verb 'to verb', uninflected present tense"
+p750
+S"y'know "
+p751
+tp752
+sS'FW-OD'
+p753
+(S'foreign word: numeral, ordinal'
+p754
+S'18e 17e quintus '
+p755
+tp756
+sS'RB$'
+p757
+(S'adverb, genitive'
+p758
+S"else's "
+p759
+tp760
+sS'FW-IN+NN'
+p761
+(S'foreign word: preposition + noun, singular, common'
+p762
+S"d'etat d'hotel d'argent d'identite d'art "
+p763
+tp764
+sS'UH'
+p765
+(S'interjection'
+p766
+S"Hurrah bang whee hmpf ah goodbye oops oh-the-pain-of-it ha crunch say oh why see well hello lo alas tarantara rum-tum-tum gosh hell keerist Jesus Keeeerist boy c'mon 'mon goddamn bah hoo-pig damn ... "
+p767
+tp768
+sS'FW-WPO'
+p769
+(S'foreign word: WH-pronoun, accusative'
+p770
+S'quibusdam '
+p771
+tp772
+sS'VB+PPO'
+p773
+(S'verb, uninflected present tense + pronoun, personal, accusative'
+p774
+S"let's lemme gimme "
+p775
+tp776
+sS'VB'
+p777
+(S'verb, base: uninflected present, imperative or infinitive'
+p778
+S'investigate find act follow inure achieve reduce take remedy re-set distribute realize disable feel receive continue place protect eliminate elaborate work permit run enter force ... '
+p779
+tp780
+sS'WRB+DOD*'
+p781
+(S"WH-adverb + verb 'to do', past tense, negated"
+p782
+S"whyn't "
+p783
+tp784
+sS'FW-IN'
+p785
+(S'foreign word: preposition'
+p786
+S'ad de en a par con dans ex von auf super post sine sur sub avec per inter sans pour pendant in di '
+p787
+tp788
+sS'NP+MD'
+p789
+(S'noun, singular, proper + modal auxillary'
+p790
+S"Gyp'll John'll "
+p791
+tp792
+sS'RBT'
+p793
+(S'adverb, superlative'
+p794
+S'most best highest uppermost nearest brightest hardest fastest deepest farthest loudest ... '
+p795
+tp796
+sS'ABL'
+p797
+(S'determiner/pronoun, pre-qualifier'
+p798
+S'quite such rather '
+p799
+tp800
+sS'RBR'
+p801
+(S'adverb, comparative'
+p802
+S'further earlier better later higher tougher more harder longer sooner less faster easier louder farther oftener nearer cheaper slower tighter lower worse heavier quicker ... '
+p803
+tp804
+sS'ABN'
+p805
+(S'determiner/pronoun, pre-quantifier'
+p806
+S'all half many nary '
+p807
+tp808
+sS'NR+MD'
+p809
+(S'noun, singular, adverbial + modal auxillary'
+p810
+S"today'll "
+p811
+tp812
+sS'AP'
+p813
+(S'determiner/pronoun, post-determiner'
+p814
+S"many other next more last former little several enough most least only very few fewer past same Last latter less single plenty 'nough lesser certain various manye next-to-last particular final previous present nuf "
+p815
+tp816
+sS'PPSS+HV'
+p817
+(S"pronoun, personal, nominative, not 3rd person singular + verb 'to have', uninflected present tense"
+p818
+S"I've we've they've you've "
+p819
+tp820
+sS'AT'
+p821
+(S'article'
+p822
+S"the an no a every th' ever' ye "
+p823
+tp824
+sS'DOZ*'
+p825
+(S"verb 'to do', present tense, 3rd person singular, negated"
+p826
+S"doesn't don't "
+p827
+tp828
+sS'ABX'
+p829
+(S'determiner/pronoun, double conjunction or pre-quantifier'
+p830
+S'both '
+p831
+tp832
+sS'HV+TO'
+p833
+(S"verb 'to have', uninflected present tense + infinitival to"
+p834
+S'hafta '
+p835
+tp836
+sS'FW-WPS'
+p837
+(S'foreign word: WH-pronoun, nominative'
+p838
+S'qui '
+p839
+tp840
+sS'NN+IN'
+p841
+(S'noun, singular, common + preposition'
+p842
+S'buncha '
+p843
+tp844
+sS'JJ+JJ'
+p845
+(S'adjective, hyphenated pair'
+p846
+S'big-large long-far '
+p847
+tp848
+sS'HVD*'
+p849
+(S"verb 'to have', past tense, negated"
+p850
+S"hadn't "
+p851
+tp852
+sS'PPS+HVD'
+p853
+(S"pronoun, personal, nominative, 3rd person singular + verb 'to have', past tense"
+p854
+S"she'd he'd it'd "
+p855
+tp856
+sS'FW-IN+AT'
+p857
+(S'foreign word: preposition + article'
+p858
+S"della des du aux zur d'un del dell' "
+p859
+tp860
+sS'FW-QL'
+p861
+(S'foreign word: qualifier'
+p862
+S'minus '
+p863
+tp864
+sS'FW-NP'
+p865
+(S'foreign word: noun, singular, proper'
+p866
+S'Karshilama Dieu Rundfunk Afrique Espanol Afrika Spagna Gott Carthago deus '
+p867
+tp868
+sS'QLP'
+p869
+(S'qualifier, post'
+p870
+S"indeed enough still 'nuff "
+p871
+tp872
+sS'FW-NR'
+p873
+(S'foreign word: noun, singular, adverbial'
+p874
+S"heute morgen aujourd'hui hoy "
+p875
+tp876
+sS'FW-NN'
+p877
+(S'foreign word: noun, singular, common'
+p878
+S'ballet esprit ersatz mano chatte goutte sang Fledermaus oud def kolkhoz roi troika canto boite blutwurst carne muzyka bonheur monde piece force ... '
+p879
+tp880
+sS'IN+PPO'
+p881
+(S'preposition + pronoun, personal, accusative'
+p882
+S"t'hi-im "
+p883
+tp884
+sS'PN+HVD'
+p885
+(S"pronoun, nominal + verb 'to have', past tense"
+p886
+S"nobody'd "
+p887
+tp888
+sS'NRS'
+p889
+(S'noun, plural, adverbial'
+p890
+S'Sundays Mondays Saturdays Wednesdays Souths Fridays '
+p891
+tp892
+sS'MD+HV'
+p893
+(S"modal auxillary + verb 'to have', uninflected form"
+p894
+S"shouldda musta coulda must've woulda could've "
+p895
+tp896
+sS'PN+MD'
+p897
+(S'pronoun, nominal + modal auxillary'
+p898
+S"someone'll somebody'll anybody'd "
+p899
+tp900
+sS'QL'
+p901
+(S'qualifier, pre'
+p902
+S'well less very most so real as highly fundamentally even how much remarkably somewhat more completely too thus ill deeply little overly halfway almost impossibly far severly such ... '
+p903
+tp904
+s.
