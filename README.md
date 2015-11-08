@@ -44,6 +44,7 @@ until a merge is done (see below).
 cd cs109-groupproj-college
 git checkout -b newbranch
 git push origin newbranch
+git push --set-upstream origin newbranch
 ```
 The `push origin` is needed to send the branch to github, which you
 will need to do before pushing the branch so everyone else can see
