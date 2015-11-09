@@ -1,4 +1,4 @@
-,studentID,classrank,admissionstest,AP,averageAP,SATsubject,GPA,program,schooltype,intendedgradyear,canAfford,female,MinorityGender,MinorityRace,outofstate,international,firstinfamily,alumni,sports,artist,workexp
-0,V9OP0JIIYX,,0.98,,,,4.5,,-1.0,2020.0,,-1.0,,,,1.0,,,,,
-0,90TP46DDFE,,0.98,,,,4.5,,-1.0,2019.0,,1.0,,,,0.0,,,,,
-1,ZKTSPH74H8,,0.65,,,,2.2,,1.0,2019.0,,-1.0,,,,0.0,,,,,
+,studentID,classrank,admissionstest,AP,averageAP,SATsubject,GPA,program,schooltype,intendedgradyear,canAfford,female,MinorityGender,MinorityRace,international,firstinfamily,sports,artist,workexp
+0,DI4C3IY3XU,,0.98,,,,4.5,,-1.0,2020.0,,-1.0,,,1.0,,,,
+0,CIZX3PH1RD,,0.98,,,,4.5,,-1.0,2019.0,,1.0,,,0.0,,,,
+1,PSZ24Q5BUW,,0.65,,,,2.2,,1.0,2019.0,,-1.0,,,0.0,,,,

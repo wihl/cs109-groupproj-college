@@ -1,4 +1,4 @@
-,studentID,collegeID,earlyAppl,visited,acceptStatus,acceptProb
-0,V9OP0JIIYX,Harvard,0.0,0.0,0.0,
-0,90TP46DDFE,Yale,0.0,0.0,0.0,
-1,ZKTSPH74H8,Columbia,1.0,1.0,1.0,
+,studentID,collegeID,earlyAppl,visited,alumni,outofstate,acceptStatus,acceptProb
+0,DI4C3IY3XU,Harvard,0.0,0.0,,,0.0,
+0,CIZX3PH1RD,Yale,0.0,0.0,,,0.0,
+1,PSZ24Q5BUW,Columbia,1.0,1.0,,,1.0,
