@@ -2,14 +2,46 @@
 
 CS109 Group Project Fall 2015 ***Predicting College Admissions***
 
-To track activity, see the [Trello Board](https://trello.com/b/eQLW599s)
+#### Where to find things:
+
+Project status: [Trello Board](https://trello.com/b/eQLW599s)
+
+Discussions: [Slack Domain](https://team-ivy.slack.com)
 
 [Main iPython Notebook](teamivy.ipynb)
 
-Where to find things:
+[The Datamodel](https://docs.google.com/a/g.harvard.edu/spreadsheets/d/1dm73Vmov8bhNoVRUtyg6TU-IgE7DPDVlukMkvnaCqAg/edit?usp=drive_web)
+
+[Database Sample Notebook](sampledatabase.ipynb)
 
 [Project Resources](Resources.md)
 
+# Getting R to work in iPython
+
+First, install R extension
+
+```
+pip install rpy2
+```
+
+Then in the iPython notebook, reference the extension:
+
+```
+%load_ext rpy2.ipython
+```
+
+Then in a given cell
+
+```
+%R executes a single line of R
+```
+
+and
+
+```
+%%R
+# makes the whole cell into an R cell
+```
 
 # git Notes
 
@@ -38,6 +70,7 @@ until a merge is done (see below).
 cd cs109-groupproj-college
 git checkout -b newbranch
 git push origin newbranch
+git push --set-upstream origin newbranch
 ```
 The `push origin` is needed to send the branch to github, which you
 will need to do before pushing the branch so everyone else can see
