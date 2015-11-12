@@ -13,8 +13,7 @@ class Student:
         global studentDF
         self.keysize = 10
         self.factorcolumns = ['canAfford', 'female', 'MinorityGender','MinorityRace',
-                              'outofstate','international','firstinfamily','alumni',
-                              'sports','artist', 'workexp']
+                              'international','firstinfamily','sports','artist', 'workexp']
         self.columnlist = ['studentID','classrank', 'admissionstest','AP','averageAP',
                            'SATsubject', 'GPA', 'program','schooltype',
                            'intendedgradyear'] + self.factorcolumns
@@ -112,10 +111,8 @@ class Student:
                 random.randint(0,1), # female
                 random.randint(0,1), # MinorityGender
                 random.randint(0,1), # MinorityRace
-                random.randint(0,1), # outofstate
                 random.randint(0,1), # international
                 random.randint(0,1), # firstinfamily
-                random.randint(0,1), # alumni
                 random.randint(0,1),  # sports
                 random.randint(0,1),  # artist
                 random.randint(0,1) # workexp
@@ -162,7 +159,7 @@ class ApplForm:
         global studentDF, collegeDF
         self.ApplFormDF = pd.DataFrame(columns =
                                        ['studentID','collegeID','earlyAppl','visited',
-                                        'acceptStatus','acceptProb'])
+                                        'alumni', 'outofstate', 'acceptStatus','acceptProb'])
 
         return
     @property
@@ -228,6 +225,8 @@ class ApplForm:
                 self.ApplFormDF.loc[i] = [studentID, collegeID, 
                                           random.randint(0,1), # earlyAppl
                                           random.randint(0,1), # visited
+                                          random.randint(0,1), # alumni
+                                          random.randint(0,1), # outofstate
                                           random.randint(0,1), # acceptStatus
                                           random.random() # acceptProb
                                           ]
