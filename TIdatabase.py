@@ -15,8 +15,8 @@ class Student:
         self.factorcolumns = ['canAfford', 'female', 'MinorityGender','MinorityRace',
                               'international','firstinfamily','sports','artist', 'workexp']
         self.columnlist = ['studentID','classrank', 'admissionstest','AP','averageAP',
-                           'SATsubject', 'GPA', 'program','schooltype',
-                           'intendedgradyear'] + self.factorcolumns
+                           'SATsubject', 'GPA', 'GPA_w', 'program','schooltype',
+                           'intendedgradyear', 'addInfo'] + self.factorcolumns
         if (studentDF is None):
             studentDF = pd.DataFrame(columns = self.columnlist)
 
@@ -104,6 +104,7 @@ class Student:
                 random.random(), # averageAP
                 random.random(), # SAT subject
                 random.random(), # GPA
+                random.random(), # Weighted GPA
                 random.randint(1,5), # program factor 
                 random.randint(1,5), # schooltype
                 random.randint(2010,2020), # grad year
