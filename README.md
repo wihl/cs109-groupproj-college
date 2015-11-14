@@ -18,6 +18,7 @@ Discussions: [Slack Domain](https://team-ivy.slack.com)
 
 [Data Normalization](normalize.ipynb)
 
+[Simple Predictions](predict.ipynb)
 
 [Project Resources](Resources.md)
 
