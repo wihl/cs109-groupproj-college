@@ -14,7 +14,7 @@ Discussions: [Slack Domain](https://team-ivy.slack.com)
 
 [Database Sample Notebook](sampledatabase.ipynb)
 
-[CollegeData Scraping](scrape/collegedata/SingerRender.ipynb)
+[CollegeData Scraping](scrape/collegedata/SingleRender.ipynb)
 
 [Data Normalization](normalize.ipynb)
 
