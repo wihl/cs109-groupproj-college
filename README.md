@@ -14,6 +14,12 @@ Discussions: [Slack Domain](https://team-ivy.slack.com)
 
 [Database Sample Notebook](sampledatabase.ipynb)
 
+[CollegeData Scraping](scrape/collegedata/SingleRender.ipynb)
+
+[Data Normalization](normalize.ipynb)
+
+[Simple Predictions](predict.ipynb)
+
 [Project Resources](Resources.md)
 
 # Getting R to work in iPython
