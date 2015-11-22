@@ -9,18 +9,24 @@ require(plyr)
 shinyServer(function(input, output, session) {
 
  
-  ## PART ONE: Parse search input to get user options
-
+ 
+ observeEvent(input$goButton, {gotime<-1
+  })
+  
+ 
+  
   # get text for header
   output$headerText <- renderUI({
     
-    logitfun <- glm(acceptStatus ~ GPA + admissionstest + college, data = dataset, family = "binomial")
-    testdata<-data.frame(GPA=input$gpa,admissionstest=input$sat,name=input$school)
+    if (input$college!=""&&!is.null(gotime)){
+    
+    logitfun <- glm(acceptStatus ~ GPA + admissionstest + name, data = data, family = "binomial")
+    testdata<-data.frame(GPA=input$gpa,admissionstest=input$sat,name=input$college)
     testdata$rankP<-predict(logitfun,newdata=testdata,type="response")
     
     str1 <- paste("<p>Our algorithm predicts you have a")
     str2 <- paste("percent chance of getting in to")
-    HTML(str1,testdata$rankP,str2,input$school)
+    HTML(str1,testdata$rankP,str2,input$college)}
        
      })
   
