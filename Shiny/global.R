@@ -8,3 +8,8 @@ data <-dataset[dataset$acceptStatus!=0,]
 data$acceptStatus[data$acceptStatus==-1]<-0
 
 
+dataunnormed<-read.csv("collegedata_unnormalized.csv")
+dataunnormed$SATsubject<-as.numeric(dataunnormed$SATsubject)
+
+
+

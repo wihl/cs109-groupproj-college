@@ -10,19 +10,17 @@ require(plyr)
 
 shinyUI(fluidPage(
   titlePanel("What are my chances?"),
-  fluidRow(
-    column(4,
+  fluidRow(column(12,align="center",
+
            wellPanel(
-             h4("Input your application information."),
               sliderInput("sat", "SAT score (combined)",
-                         0, 2400, 1500, step = 10),
-              sliderInput("gpa", "GPA", 0,4, 2, step = .1),
-              textInput("apnum", "Number of AP exams taken"),
+                         0, 2400, 0, step = 10),
+              sliderInput("gpa", "GPA", 0,4, 0, step = .1),
+              sliderInput("apnum", "Number of AP exams taken", 0,10, 0, step = 1),
               sliderInput("apave", "Average AP score",
-                         1, 5, 1, step = .1),
-             textInput("sat2num", "Number of SAT Subject tests taken"),
+                         0, 5, 0, step = .1),
               sliderInput("sat2ave", "Average SAT Subject test score",
-                          1, 800, 10, step = .1)
+                          0, 800, 0, step = 10)
               
 
              
@@ -41,35 +39,37 @@ shinyUI(fluidPage(
 #       
 #     )))
   )
-),
-column(4,wellPanel(
-           selectInput("hs","What type of high school did you attend?",
-                        c("Public","Private","Parochial","Homeschool")),
+,column(3,selectInput("hs","What type of high school did you attend?",
+                        c("Public"="-1","Private"="1","Parochial"="1","Homeschool"="1")),
            radioButtons("gender","What gender do you identify as?",
-                        c("Female","Male","Other")),
+                        c("Female"="1","Male"="-1","Other"="0")),
            selectInput("race","What ethnicity do you identify as?",
-                       c("African American/Black","Hispanic/Latino",
-                         "Asian","Middle Eastern","Pacific Islander",
-                         "Native American","Other")),
+                       c("African American/Black"="1","Hispanic/Latino"="1",
+                         "Asian"="0","Middle Eastern"="0","Pacific Islander"="1",
+                         "Native American"="1","White"="0","Other"="1")),
            radioButtons("international","Are you a foreign national?",
-                        c("Yes","No")),
+                        c("Yes"="1","No"="-1")),
            radioButtons("firstinfamily","Are you the first in your family to attend university?",
-                        c("Yes","No")),
+                        c("Yes"="1","No"="-1")),
            radioButtons("alum","Are you a legacy at this school?",
-                        c("Yes","No"))
-           )),
-column(3,wellPanel(radioButtons("out","Are you applying from out of state?",
-                                c("Yes","No")),
+                        c("Yes"="1","No"="-1"))
+           ),
+column(3,radioButtons("out","Are you applying from out of state?",
+                                c("Yes"="1","No"="-1")),
                    radioButtons("sports","Do you play varsity athletics?",
-                                c("Yes","No")),
-                   radioButtons("arts","Are you involved in the arts?",
-                                c("Yes","No")),
+                                c("Yes"="1","No"="-1")),
+                   radioBstruttons("arts","Are you involved in the arts?",
+                                c("Yes"="1","No"="-1")),
                    radioButtons("work","Do you have work experience?",
-                                c("Yes","No")),
+                                c("Yes"="1","No"="-1")),
+                   radioButtons("early","Are you applying early?",
+                                c("Yes"="1","No"="-1")),
+                   radioButtons("visit","Have you visited the school?",
+                                c("Yes"="1","No"="-1"))),
+column(3,
                    selectInput("college", "What college are you applying to?",
                     c("","Princeton","Harvard","Yale","Columbia","Stanford","UChicago",
-                      "MIT","Duke","UPenn","CalTech","Johns Hopkins","Dartmouth","Northwestern",
+                      "MIT","Duke","UPenn","CalTech","JohnsHopkins","Dartmouth","Northwestern",
                       "Brown","Cornell","Vanderbilt","WashU","Rice","Notre Dame",
-                      "UCB","Emory","Georgetown","Carnegie Mellon","UCLA","USC")),
-                        actionButton("goButton", label = "Submit"),
-                 h2(uiOutput("headerText")))))))
+                      "UCB","Emory","Georgetown","CarnegieMellon","UCLA","USC"))),
+                 h2(uiOutput("headerText"))))))
