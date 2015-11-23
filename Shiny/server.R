@@ -97,8 +97,13 @@ shinyServer(function(input, output, session) {
       xvar <- prop("x", as.symbol(input$xvar))
       yvar <- prop("y", as.symbol(input$yvar))
       
+      if (input$college!='')
+      {graphdata = data[data$name==input$college,]}
+      else
+      {graphdata = subdata}
       
-      subdata %>%
+      
+      graphdata %>%
         ggvis(x = xvar, y = yvar) %>%
         layer_points(size := 50, size.hover := 200,
                      fillOpacity := 0.2, fillOpacity.hover := 0.5,
