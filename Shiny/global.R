@@ -1,15 +1,8 @@
 ## shape data for MST
-require(plyr)
-require(reshape2)
+load('model.RData')
 
-  
-dataset<-read.csv("collegedata_normalized.csv")
-data <-dataset[dataset$acceptStatus!=0,]
-data$acceptStatus[data$acceptStatus==-1]<-0
-
-
-dataunnormed<-read.csv("collegedata_unnormalized.csv")
-dataunnormed$SATsubject<-as.numeric(dataunnormed$SATsubject)
-
-
-
+importdf<-as.data.frame(importance(rf))
+importdf$features<-row.names(importdf)
+importdf$order<-order(importdf$MeanDecreaseGini)
+drops <- c("instatePct")
+importdf<-importdf[,!(names(importdf) %in% drops)]
