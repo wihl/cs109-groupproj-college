@@ -65,9 +65,6 @@ shinyServer(function(input, output, session) {
       createAlert(session, "alert", "Alert", title = "This prediction is not a guarantee of admission.", 
                   "This website is experimental. We are simply interested in exploring how application factors affect college admissions.", append = FALSE);
       
-      importdf$reorder <- reorder(importdf$features,importdf$MeanDecreaseGini)
-    
-      
       
     ggplot(data=importdf,aes(y=MeanDecreaseGini,x=reorder,fill=MeanDecreaseGini))+
       geom_bar(stat="identity")+coord_flip()+
