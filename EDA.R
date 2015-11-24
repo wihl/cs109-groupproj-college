@@ -1,5 +1,5 @@
 app = read.csv("collegedata_unnormalized.csv",header=T)
-df = app[ , c("GPA","AP","averageAP","schooltype","international","earlyAppl","firstinfamily", "admissionstest","canAfford","female","MinorityRace","collegeID","acceptStatus")]
+df = app[ , c("studentID", "GPA","AP","averageAP","schooltype","international","earlyAppl","firstinfamily", "admissionstest","canAfford","female","MinorityRace","collegeID","acceptStatus")]
 df$collegeID = as.factor(df$collegeID)
 df = df[df$acceptStatus!=0,]
 df$firstinfamily = NULL
@@ -8,8 +8,14 @@ na_count = sapply(df, function(y) sum(length(which(is.na(y)))))
 na_count = data.frame(na_count)
 df$averageAP = NULL
 
-fit = aov(acceptStatus~MinorityRace*collegeID, data=df)
+mod1 = glmer(acceptStatus~MinorityRace*collegeID+(1| studentID),family="binomial", data=df)
+# CHANGE acceptStatus to 0,1 instead of -1,+1
+# take exp(estimate) to make odds ratio. Or another transform to gen. probability
+
+sumafit = aov(acceptStatus~MinorityRace*collegeID, data=df)
 summary(fit)
+
+# linear mixed effects function, lme, glme
 
 df$acceptRace = df$acceptStatus * df$MinorityRace
 
