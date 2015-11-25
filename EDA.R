@@ -12,6 +12,9 @@ mod1 = glmer(acceptStatus~MinorityRace*collegeID+(1| studentID),family="binomial
 # CHANGE acceptStatus to 0,1 instead of -1,+1
 # take exp(estimate) to make odds ratio. Or another transform to gen. probability
 
+
+# why we are doing in R and not Python: http://www.r-bloggers.com/r-vs-python-practical-data-analysis-nonlinear-regression/
+
 sumafit = aov(acceptStatus~MinorityRace*collegeID, data=df)
 summary(fit)
 
