@@ -22,6 +22,8 @@ Discussions: [Slack Domain](https://team-ivy.slack.com)
 
 [Project Resources](Resources.md)
 
+[Dependencies and Libraries](Dependencies.md)
+
 # Getting R to work in iPython
 
 First, install R extension
