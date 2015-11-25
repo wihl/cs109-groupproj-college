@@ -8,10 +8,10 @@ import TIdatabase as ti
 
 app = Flask(__name__)
 clf = None
-predictor_cols = ["admissionstest","AP","averageAP","SATsubject","GPA","schooltype",
+ws_cols = ["admissionstest","AP","averageAP","SATsubject","GPA","schooltype",
                   "intendedgradyear","female","MinorityRace","international","sports",
-                  "earlyAppl","alumni","outofstate","acceptrate","size","public",
-                  "finAidPct","instatePct"]
+                  "earlyAppl","alumni","outofstate"]
+predictor_cols = ws_cols + ["acceptrate","size","public","finAidPct","instatePct"]
 NUM_ESTIMATORS = 50
 
 colleges = ti.College()
@@ -35,11 +35,12 @@ def load_classifier():
     clf.fit(X,y)
 
 def genPredictionList(vals):
-    global predictor_cols
+    global ws_cols, clf
     preds = []
     X = np.array(vals)
     for i, row in colleges.df.iterrows():
-        y = clf.predict_proba(X)[0][1]
+        X_prime = np.append(X, row[-5:]) # take the last 5 columns of the Colleges dataframe 
+        y = clf.predict_proba(X_prime)[0][1]
         p = {'college':row.collegeID, 'prob':y}
         preds.append(p)
     return preds
@@ -53,7 +54,7 @@ def hello():
 @app.route("/predict")
 def predict():
     vals = []
-    for i in predictor_cols:
+    for i in ws_cols:
         vals.append( float(request.args.get(i)))
     preds = genPredictionList(vals)
     return jsonify(preds = preds)

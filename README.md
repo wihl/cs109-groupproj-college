@@ -1,6 +1,6 @@
-# cs109-groupproj-college
+# CS109 Group Project Fall 2015 - Team Ivy
 
-CS109 Group Project Fall 2015 ***Predicting College Admissions***
+## ***Predicting College Admissions***
 
 #### Where to find things:
 
@@ -18,7 +18,7 @@ Discussions: [Slack Domain](https://team-ivy.slack.com)
 
 [Data Normalization](normalize.ipynb)
 
-[Simple Predictions](predict.ipynb)
+[Classification](classification_v2.ipynb)
 
 [Project Resources](Resources.md)
 
