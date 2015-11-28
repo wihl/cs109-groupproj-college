@@ -1,0 +1,26 @@
+
+<html>
+<title>page 1</title>
+<body>
+</H1>Welcome to Team Ivy's Project Page</H1>
+
+Select which chapter you would like to view:
+<div align="center>
+<form>
+<select onchange="document.getElementById('myiframe').src = this.options[this.selectedIndex].value;">
+    <option value="">Choose a destination...</option>
+    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb">Preface</option>
+    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/sampledatabase.ipynb">Schema and Data Model</option>
+    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/scrape/collegedata/Scraping%20Collegedata_MultipleRender.ipynb">Scraping Data</option>
+    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/normalize.ipynb">Normalization of the Data</option>
+    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/classification_v2.ipynb">Classification and Prediction</option>
+</select>
+</form>
+
+<br>
+<div width=700px height=1000px>
+<iframe id="myiframe" name="myiframe" width="100%" height="100%"></iframe>
+</div>
+</div>
+</body>
+</html>
