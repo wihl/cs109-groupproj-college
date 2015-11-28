@@ -1,24 +1,32 @@
 <html>
-<title>page 1</title>
+<title>CS109 Team Ivy - College Acceptance Probabilities</title>
 <body>
 <div align="center">
 <H1>Welcome to Team Ivy's Project Page</H1>
-Select which chapter you would like to view:
 <form>
-<select onchange="document.getElementById('myiframe').src = this.options[this.selectedIndex].value;">
-    <option value="">Choose a destination...</option>
+Select chapter: 
+<select id="topnav" onchange="document.getElementById('myiframe').src = this.options[this.selectedIndex].value;document.getElementById('botnav').options[this.options.selectedIndex].selected = true;">
     <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb">Preface</option>
     <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/sampledatabase.ipynb">Chapter 1 - Schema and Data Model</option>
     <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/scrape/collegedata/Scraping%20Collegedata_MultipleRender.ipynb">Chapter 2 - Scraping Data</option>
     <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/normalize.ipynb"> Chapter 3 - Normalization of the Data</option>
     <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/classification_v2.ipynb">Chapter 4 - Classification and Prediction</option>
 </select>
+<small>or, see the <a href="https://github.com/wihl/cs109-groupproj-college">code on github</a></small>
 </form>
-
 <br>
 <div width=700px height=1000px>
-<iframe id="myiframe" name="myiframe" width="100%" height="100%"></iframe>
+<iframe id="myiframe" name="myiframe" width="100%" height="100%" src="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb"></iframe>
 </div>
+<form>
+Select chapter: 
+<select id="botnav" onchange="document.getElementById('myiframe').src = this.options[this.selectedIndex].value;document.getElementById('topnav').options[this.options.selectedIndex].selected = true;">
+    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb">Preface</option>
+    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/sampledatabase.ipynb">Chapter 1 - Schema and Data Model</option>
+    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/scrape/collegedata/Scraping%20Collegedata_MultipleRender.ipynb">Chapter 2 - Scraping Data</option>
+    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/normalize.ipynb"> Chapter 3 - Normalization of the Data</option>
+    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/classification_v2.ipynb">Chapter 4 - Classification and Prediction</option>
+</select>
 </div>
 </body>
 </html>
