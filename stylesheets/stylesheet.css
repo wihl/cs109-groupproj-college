@@ -242,7 +242,9 @@ hr {
 }
 
 table {
-  border: 1px solid #373737;
+  /* border: 1px solid #373737;*/
+  /*border: 50px hidden;*/
+  border-top: none
   margin-bottom: 20px;
   text-align: left;
  }
@@ -256,12 +258,14 @@ th {
 
 td {
   padding: 10px;
-  border: 1px solid #373737;
+  text-align: center;
+  /*border: 1px hidden;*/
+  /* border: 1px solid #373737; */
  }
 
 form {
   background: #f2f2f2;
-  padding: 20px;
+  padding: 10px;
 }
 
 img {
@@ -279,8 +283,8 @@ Full-Width Styles
 
 .inner {
   position: relative;
-  max-width: 700px;
-  padding: 20px 10px;
+  max-width: 100%;
+  padding: 10px 10px;
   margin: 0 auto;
 }
 
@@ -334,7 +338,7 @@ Full-Width Styles
 #TOC{
     font-size: 23px;
     margin-bottom: 30px;
-        
+
 }
 
 #TOC ul{
