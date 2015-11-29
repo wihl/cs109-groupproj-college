@@ -155,6 +155,36 @@ It is a good idea to not wait too long to merge into master. Once it is
 in a stable state, ready to use by others if not feature complete, do
 the merge into master.
 
+### When Two People Work on the Same Branch
+
+If two of you are working on the same branch (which I don't 
+particularly advise), you have to do a few extra steps to
+keep each other in sync. Otherwise one of you will make a 
+change, push the change, while another person makes a change.
+Then git complains about not being able to reconcile the two
+changes and the commits are out of sync.
+
+So before pushing your code, merge in the latest copy of the
+origin branch from github:
+
+```
+git fetch
+git merge origin/mybranch
+```
+If there are no conflicts, you can proceed. Otherwise, you have
+to manually fix the conflicts first.
+
+Then, as before:
+
+```
+git add .
+git commit -m "added cool gizmo 45"
+git push
+```
+
+Bottom line: fetch and merge from the origin branch before making
+your commits and pushes.
+
 ### That's It
 
 `git` has many powerful features like pull requests and code reviews,
