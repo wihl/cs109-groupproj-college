@@ -1,32 +1,58 @@
 <html>
-<title>CS109 Team Ivy - College Acceptance Probabilities</title>
-<body>
-<div align="center">
-<H1>Welcome to Team Ivy's Project Page</H1>
-<form>
-Select chapter: 
-<select id="topnav" onchange="document.getElementById('myiframe').src = this.options[this.selectedIndex].value;document.getElementById('botnav').options[this.options.selectedIndex].selected = true;">
-    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb">Preface</option>
-    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/sampledatabase.ipynb">Chapter 1 - Schema and Data Model</option>
-    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/scrape/collegedata/Scraping%20Collegedata_MultipleRender.ipynb">Chapter 2 - Scraping Data</option>
-    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/normalize.ipynb"> Chapter 3 - Normalization of the Data</option>
-    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/classification_v2.ipynb">Chapter 4 - Classification and Prediction</option>
-</select>
-<small>or, see the <a href="https://github.com/wihl/cs109-groupproj-college">code on github</a></small>
-</form>
-<br>
-<div width=700px height=1000px>
-<iframe id="myiframe" name="myiframe" width="100%" height="100%" src="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb"></iframe>
-</div>
-<form>
-Select chapter: 
-<select id="botnav" onchange="document.getElementById('myiframe').src = this.options[this.selectedIndex].value;document.getElementById('topnav').options[this.options.selectedIndex].selected = true;">
-    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb">Preface</option>
-    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/sampledatabase.ipynb">Chapter 1 - Schema and Data Model</option>
-    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/scrape/collegedata/Scraping%20Collegedata_MultipleRender.ipynb">Chapter 2 - Scraping Data</option>
-    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/normalize.ipynb"> Chapter 3 - Normalization of the Data</option>
-    <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/classification_v2.ipynb">Chapter 4 - Classification and Prediction</option>
-</select>
-</div>
-</body>
+  <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <title>CS109 Team Ivy - College Acceptance Probabilities</title>
+    <style>
+      #nav {
+        margin-left:auto;
+        margin-right:auto;
+        width:50%;
+        padding:10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div align="center">
+      <div class="page-header">
+        <h1>Welcome to Team Ivy's Project Page</h1>
+      </div>
+      <div id="nav">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Select chapter:</label>
+            <div class="col-sm-5">
+              <select id="topnav" class="form-control" onchange="document.getElementById('myiframe').src = this.options[this.selectedIndex].value;document.getElementById('botnav').options[this.options.selectedIndex].selected = true;">
+                <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb">Preface</option>
+                <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/sampledatabase.ipynb">Chapter 1 - Schema and Data Model</option>
+                <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/scrape/collegedata/Scraping%20Collegedata_MultipleRender.ipynb">Chapter 2 - Scraping Data</option>
+                <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/normalize.ipynb"> Chapter 3 - Normalization of the Data</option>
+                <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/classification_v2.ipynb">Chapter 4 - Classification and Prediction</option>
+              </select>
+            </div>
+          </div>
+          <small>or, see the <a href="https://github.com/wihl/cs109-groupproj-college">code on github</a></small>
+        </form>
+      </div>
+      <br>
+        <div width=700px height=1000px>
+          <iframe id="myiframe" name="myiframe" width="100%" height="100%" src="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb"></iframe>
+        </div>
+      </br>
+      <div id="nav">
+        <form class="form-horizontal">
+          Select chapter:
+          <select id="botnav" class="form-control" onchange="document.getElementById('myiframe').src = this.options[this.selectedIndex].value;document.getElementById('topnav').options[this.options.selectedIndex].selected = true;">
+            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb">Preface</option>
+            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/sampledatabase.ipynb">Chapter 1 - Schema and Data Model</option>
+            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/scrape/collegedata/Scraping%20Collegedata_MultipleRender.ipynb">Chapter 2 - Scraping Data</option>
+            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/normalize.ipynb"> Chapter 3 - Normalization of the Data</option>
+            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/classification_v2.ipynb">Chapter 4 - Classification and Prediction</option>
+          </select>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
