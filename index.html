@@ -17,17 +17,21 @@
   </head>
   <body>
     <div align="center">
+      <!-- HEADER -->
       <div id="header_wrap" class="outer">
 		<header class="inner">
 			<a id="forkme_banner" href="https://github.com/wihl/cs109-groupproj-college">View on GitHub</a>
 			<h1 id="project_title">Welcome to Team Ivy's Project Page</h1>
 		</header>
       </div>
+
+      <!-- MAIN CONTENT -->
+     <div id="main_content_wrap" class="outer">
+  <section id="main_content" class="inner">
       <div id="nav">
         <form class="form-horizontal">
           <div class="form-group">
-            <label class="col-sm-3 control-label">Select chapter:</label>
-            <div class="col-sm-5">
+            Select chapter:
               <select id="topnav" class="form-control" onchange="document.getElementById('myiframe').src = this.options[this.selectedIndex].value;document.getElementById('botnav').options[this.options.selectedIndex].selected = true;">
                 <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb">Preface</option>
                 <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/sampledatabase.ipynb">Chapter 1 - Schema and Data Model</option>
@@ -35,7 +39,6 @@
                 <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/normalize.ipynb"> Chapter 3 - Normalization of the Data</option>
                 <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/classification_v2.ipynb">Chapter 4 - Classification and Prediction</option>
               </select>
-            </div>
           </div>
         </form>
       </div>
@@ -56,6 +59,8 @@
           </select>
         </form>
       </div>
+     </section>
+    </div>
     </div>
   </body>
 </html>
