@@ -2,6 +2,7 @@ import string
 import random as random
 import pandas as pd
 import numpy as np
+import os
 
 
 # Module globals
@@ -132,7 +133,7 @@ class Student:
 class College:
     def __init__(self):
         global collegeDF
-        collegeDF = pd.read_csv("collegelist.csv")
+        collegeDF = pd.read_csv(os.path.join(os.path.dirname(__file__),"collegelist.csv"))
         #collegeDF = pd.DataFrame(columns = 
         #                              ['collegeID','name','acceptrate','size','public',
         #                               'finAidPct','instatePct'])
