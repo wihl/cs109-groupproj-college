@@ -105,9 +105,9 @@ class Student:
                 random.random(), # SAT subject
                 random.random(), # GPA
                 random.random(), # Weighted GPA
-                random.random(), # program factor 
+                ''.join(random.choice(string.ascii_uppercase) for i in range(12)), #program
                 random.randint(2009,2020), # grad year
-                random.random(), #addInfo
+                ''.join(random.choice(string.ascii_uppercase) for i in range(12)), #addInfo
                 random.randint(0,1), # canAfford
                 random.randint(0,1), # female
                 random.randint(0,1), # MinorityGender
