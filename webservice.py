@@ -1,13 +1,13 @@
 from flask import Flask
-from flask import jsonify, request
+from flask import jsonify, request, g
 import pandas as pd
 from sklearn.preprocessing import Imputer
 from sklearn.ensemble import RandomForestClassifier
+from werkzeug.local import LocalProxy
 import numpy as np
 import TIdatabase as ti
 
 app = Flask(__name__)
-clf = None
 ws_cols = ["admissionstest","AP","averageAP","SATsubject","GPA","schooltype",
                   "intendedgradyear","female","MinorityRace","international","sports",
                   "earlyAppl","alumni","outofstate"]
@@ -17,7 +17,6 @@ NUM_ESTIMATORS = 50
 colleges = ti.College()
 
 def load_classifier():
-    global clf
     df = pd.read_csv("collegedata_normalized.csv")
     cols_to_drop = []
     for i in df.columns:
@@ -33,9 +32,18 @@ def load_classifier():
     y = dfresponse
     clf = RandomForestClassifier(n_estimators=NUM_ESTIMATORS)
     clf.fit(X,y)
+    return clf
+
+def get_classifier():
+    clf = getattr(g, '_classifier', None)
+    if clf is None:
+       clf = g._classifier = load_classifier()
+    return clf
+
 
 def genPredictionList(vals):
-    global ws_cols, clf
+    global ws_cols
+    clf = LocalProxy(get_classifier)
     preds = []
     X = np.array(vals)
     for i, row in colleges.df.iterrows():

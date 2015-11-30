@@ -26,8 +26,10 @@ pred[1,] = list(9.26899206e-01,   7.00000000e+00,   1.06733864e+00,   3.24271565
 
 # create query string
 qs = paste0(colnames(pred),"=",pred[1,],collapse="&")
+server = "http://127.0.0.1:5000/predict"
+server = "http://mypythonapp-wihl.rhcloud.com/predict"
 
-URL = paste0("http://127.0.0.1:5000/predict","?",qs)
+URL = paste0(server,"?",qs)
 
 js  = fromJSON(URL)
 df = js$preds
