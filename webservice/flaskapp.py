@@ -1,13 +1,22 @@
 from flask import Flask
-from flask import jsonify, request, g
+from flask import jsonify, request
+
+import os
 import pandas as pd
 from sklearn.preprocessing import Imputer
 from sklearn.ensemble import RandomForestClassifier
-from werkzeug.local import LocalProxy
 import numpy as np
+import logging
+
 import TIdatabase as ti
 
 app = Flask(__name__)
+
+clf = None
+
+logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+ 
+
 ws_cols = ["admissionstest","AP","averageAP","SATsubject","GPA","schooltype",
                   "intendedgradyear","female","MinorityRace","international","sports",
                   "earlyAppl","alumni","outofstate"]
@@ -17,7 +26,8 @@ NUM_ESTIMATORS = 50
 colleges = ti.College()
 
 def load_classifier():
-    df = pd.read_csv("collegedata_normalized.csv")
+    global clf
+    df = pd.read_csv(os.path.join(os.path.dirname(__file__),"collegedata_normalized.csv"))
     cols_to_drop = []
     for i in df.columns:
         if 1.0* df[i].isnull().sum() / len(df[i]) >= 0.5:
@@ -34,16 +44,11 @@ def load_classifier():
     clf.fit(X,y)
     return clf
 
-def get_classifier():
-    clf = getattr(g, '_classifier', None)
-    if clf is None:
-       clf = g._classifier = load_classifier()
-    return clf
-
-
 def genPredictionList(vals):
     global ws_cols
-    clf = LocalProxy(get_classifier)
+    global clf
+    global colleges
+    if clf is None: load_classifier()
     preds = []
     X = np.array(vals)
     for i, row in colleges.df.iterrows():
@@ -52,21 +57,24 @@ def genPredictionList(vals):
         p = {'college':row.collegeID, 'prob':y}
         preds.append(p)
     return preds
-    #g = [{'college':'harvard', 'prob':y}, {'college':'yale', 'prob':0.25}, {'college':'brown', 'prob':0.89}]
+    #e.g.  [{'college':'harvard', 'prob':y}, {'college':'yale', 'prob':0.25}, {'college':'brown', 'prob':0.89}]
 
-
-@app.route("/")
-def hello():
+@app.route('/')
+def hello_world():
     return "Welcome to the Team Ivy Web Service"
 
 @app.route("/predict")
 def predict():
     vals = []
+    # NOTE: this is pretty fragile. It assumes that the order of the querystring parameters is the same
+    #       and that all parameters are present. If this was production code, it would not be written this way.
     for i in ws_cols:
         vals.append( float(request.args.get(i)))
     preds = genPredictionList(vals)
     return jsonify(preds = preds)
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     load_classifier()
     app.run(debug=True)
+
