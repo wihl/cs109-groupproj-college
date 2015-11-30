@@ -17,6 +17,48 @@
         width: 100%;
         height:100%;
       }
+      #gates {
+	      background: url(gates.jpg);
+	      /* 50% 0; no-repeat fixed;*/
+	      background-size: 100% 100%;
+	      background-repeat: no-repeat;
+	      background-size: cover;
+	      background-position: center;
+	      background-attachment: fixed;
+	      height: 700px;
+	      margin: 0 auto;
+	      width: 100%;
+	      margin: 0 auto;
+	      max-width: 3281px;
+	      position: relative;
+      }
+      #gates article{
+	       position: absolute;
+	       top: 50%;
+	       left:50%;
+	       margin-right:-50%;
+         transform: translate(-50%, -50%);
+         text-align:-webkit-center;
+    	   text-align: center;
+      }
+      #gates main,sub{
+	       font-family: "League Spartan", "Avenir Black", "futura_md_btbold", "Arial", "sans-serif";
+	       color: white;
+	       margin-left: auto;
+	       margin-right: auto;
+         text-transform: uppercase;
+         width: 66%;
+       }
+      #gates main{
+	       font-size: 72px;
+         letter-spacing: 0.1em;
+         font-weight: bold;
+       }
+      #gates sub{
+	       font-size: 32px;
+         letter-spacing: 0.3em;
+         font-weight: 300;
+       }
     </style>
     <!-- Code should get rid of double scrollbars but doesn't -->
     <script type="text/javascript">
@@ -37,14 +79,20 @@
     <div align="center">
       <!-- HEADER -->
       <div id="header_wrap" class="outer">
-		      <header class="inner">
-			        <a id="forkme_banner" href="https://github.com/wihl/cs109-groupproj-college">View on GitHub</a>
-			        <h1 id="project_title">Welcome to Team Ivy's Project Page</h1>
-
+		      <!--header class="inner"-->
+              <section id="gates" data-speed="4" data-type="background">
+                <div class="container">
+                  <a id="forkme_banner" href="https://github.com/wihl/cs109-groupproj-college">View on GitHub</a>
+			            <!--h1 id="project_title">Welcome to Team Ivy's Project Page</h1-->
+                  <article>
+                      <main> Welcome to Team Ivy's Project Page </main>
+                      <sub> Predicting college admissions </sub>
+                  </article>
+                </div>
               <section id="downloads">
                   <a class="zip_download_link" href="https://github.com/wihl/cs109-groupproj-college/archive/master.zip">Download this project as a .zip file</a>
               </section>
-		      </header>
+		      <!--/header-->
       </div>
 
       <!-- MAIN CONTENT -->
