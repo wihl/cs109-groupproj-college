@@ -1,10 +1,11 @@
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script type ="text/javascript" src ="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
     <title>CS109 Team Ivy - College Acceptance Probabilities</title>
     <style>
       #nav {
@@ -61,18 +62,17 @@
        }
     </style>
     <!-- Code should get rid of double scrollbars but doesn't -->
-    <script type="text/javascript">
-        function setIframeHeight(iframe) {
-            if (iframe) {
-                var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
-                if (iframeWin.document.body) {
-                    iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
-                }
-            }
-        };
-        window.onload = function () {
-            setIframeHeight(document.getElementById('myiframe'));
-        };
+    <script type ="text/javascript">
+        function autoResize(id){
+            var doc=document.getElementById(id).contentWindow.document;
+            var body_ = doc.body, html_ = doc.documentElement;
+
+            var height = Math.max( body_.scrollHeight, body_.offsetHeight, html_.clientHeight, html_.scrollHeight, html_.offsetHeight );
+            var width  = Math.max( body_.scrollWidth, body_.offsetWidth, html_.clientWidth, html_.scrollWidth, html_.offsetWidth );
+
+            document.getElementById(id).style.height=height;
+            document.getElementById(id).style.width=width;
+        }
     </script>
   </head>
   <body>
@@ -89,9 +89,6 @@
                       <sub> Predicting college admissions </sub>
                   </article>
                 </div>
-              <section id="downloads">
-                  <a class="zip_download_link" href="https://github.com/wihl/cs109-groupproj-college/archive/master.zip">Download this project as a .zip file</a>
-              </section>
 		      <!--/header-->
       </div>
 
@@ -112,7 +109,7 @@
                 </form>
                 <br>
                     <div width="100%" height="100%">
-                        <iframe id="myiframe" name="myiframe" src="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb"></iframe>
+                        <iframe id="myiframe" same_height_as="contentWindow" name="myiframe" src="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb"></iframe>
                     </div>
                 </br>
                 <form id="nav" class="form-horizontal">
