@@ -2,6 +2,7 @@ import string
 import random as random
 import pandas as pd
 import numpy as np
+import os
 
 
 # Module globals
@@ -13,9 +14,9 @@ class Student:
         global studentDF
         self.keysize = 10
         self.factorcolumns = ['canAfford', 'female', 'MinorityGender','MinorityRace',
-                              'international','firstinfamily','sports','artist', 'workexp']
+                              'international','firstinfamily','sports','artist', 'workexp','schooltype']
         self.columnlist = ['studentID','classrank', 'admissionstest','AP','averageAP',
-                           'SATsubject', 'GPA', 'GPA_w', 'program','schooltype',
+                           'SATsubject', 'GPA', 'GPA_w', 'program',
                            'intendedgradyear', 'addInfo'] + self.factorcolumns
         if (studentDF is None):
             studentDF = pd.DataFrame(columns = self.columnlist)
@@ -105,9 +106,9 @@ class Student:
                 random.random(), # SAT subject
                 random.random(), # GPA
                 random.random(), # Weighted GPA
-                random.randint(1,5), # program factor 
-                random.randint(1,5), # schooltype
-                random.randint(2010,2020), # grad year
+                ''.join(random.choice(string.ascii_uppercase) for i in range(12)), #program
+                random.randint(2009,2020), # grad year
+                ''.join(random.choice(string.ascii_uppercase) for i in range(12)), #addInfo
                 random.randint(0,1), # canAfford
                 random.randint(0,1), # female
                 random.randint(0,1), # MinorityGender
@@ -116,7 +117,8 @@ class Student:
                 random.randint(0,1), # firstinfamily
                 random.randint(0,1),  # sports
                 random.randint(0,1),  # artist
-                random.randint(0,1) # workexp
+                random.randint(0,1), # workexp
+                random.randint(0,1) # schooltype
                 ]
             # Randomly insert NaNs
             if (nanpct > 0.0):
@@ -131,7 +133,7 @@ class Student:
 class College:
     def __init__(self):
         global collegeDF
-        collegeDF = pd.read_csv("collegelist.csv")
+        collegeDF = pd.read_csv(os.path.join(os.path.dirname(__file__),"collegelist.csv"))
         #collegeDF = pd.DataFrame(columns = 
         #                              ['collegeID','name','acceptrate','size','public',
         #                               'finAidPct','instatePct'])
