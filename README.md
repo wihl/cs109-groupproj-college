@@ -1,4 +1,4 @@
-# CS109 Group Project Fall 2015 - Team Ivy
+# CS109 Group Project Fall 2015 - Team Ivy. 
 
 ## ***Predicting College Admissions***
 
