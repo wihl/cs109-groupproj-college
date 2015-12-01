@@ -4,27 +4,21 @@
 
 #### Where to find things:
 
-Project status: [Trello Board](https://trello.com/b/eQLW599s)
+If you are a student and want to try our predictions visit [http://www.chanceme.info](http://www.chanceme.info)
+
+If you want to learn how the site was built, visit [The Project Website](http://wihl.github.io/cs109-groupproj-college/)
+
+Current Project status: [Trello Board](https://trello.com/b/eQLW599s)
 
 Discussions: [Slack Domain](https://team-ivy.slack.com)
 
-[Main iPython Notebook](teamivy.ipynb)
-
-[The Datamodel](https://docs.google.com/a/g.harvard.edu/spreadsheets/d/1dm73Vmov8bhNoVRUtyg6TU-IgE7DPDVlukMkvnaCqAg/edit?usp=drive_web)
-
-[Database Sample Notebook](sampledatabase.ipynb)
-
-[CollegeData Scraping](scrape/collegedata/SingleRender.ipynb)
-
-[Data Normalization](normalize.ipynb)
-
-[Classification](classification_v2.ipynb)
+#### Things in Markdown that haven't been put into chapters yet:
 
 [Project Resources](Resources.md)
 
 [Dependencies and Libraries](Dependencies.md)
 
-# Getting R to work in iPython
+##### Getting R to work in iPython
 
 First, install R extension
 
