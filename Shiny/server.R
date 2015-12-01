@@ -33,10 +33,10 @@ shinyServer(function(input, output, session) {
     else
     {at = max(act2sat$sat[act2sat$act==as.numeric(input$act)],as.numeric(input$satcrm)) + as.numeric(input$satw)}
     #normalize against test data
-    gpa_normed<-(as.integer(input$gpa) - mean(dataunnormed$GPA))/(max(dataunnormed$GPA)-min(dataunnormed$GPA))
-    at_normed<-(at - mean(dataunnormed$admissionstest,na.rm=TRUE))/(max(dataunnormed$admissionstest,na.rm=TRUE)-min(dataunnormed$admissionstest,na.rm=TRUE))
-    apave_normed<-(as.integer(input$apave) - mean(dataunnormed$averageAP,na.rm=TRUE))/(max(dataunnormed$averageAP,na.rm=TRUE)-min(dataunnormed$averageAP,na.rm=TRUE))
-    sat2ave_normed<-(as.integer(input$sat2ave) - mean(dataunnormed$SATsubject,na.rm=TRUE))/(max(dataunnormed$SATsubject,na.rm=TRUE)-min(dataunnormed$SATsubject,na.rm=TRUE))
+    gpa_normed<-(as.integer(input$gpa) - normedmeans$GPA)/normedstds$GPA
+    at_normed<-(at - normedmeans$admissionstest)/normedstds$admissionstest
+    apave_normed<-(as.integer(input$apave) - normedmeans$averageAP)/normedstds$averageAP
+    sat2ave_normed<-(as.integer(input$sat2ave) - normedmeans$SATsubject)/normedstds$SATsubject
     
     #process values into boolean
     if (as.integer(input$race)>0)

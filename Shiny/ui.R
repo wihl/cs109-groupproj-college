@@ -17,17 +17,17 @@ shinyUI(fluidPage(
 
            wellPanel(
               sliderInput("satcrm", "SAT score (combined math and reading portions)",
-                         0, 1600, 0, step = 10),
+                         0, 1600, 800, step = 10),
               sliderInput("satw", "SAT Writing score (if applicable)",
-                          0, 800, 0, step = 10),
+                          0, 800, 400, step = 10),
               sliderInput("act", "ACT score (combined)",
-                          0, 36, 0, step = 1),
-              sliderInput("gpa", "GPA (unweighted)", 0,4, 0, step = .1),
-              sliderInput("apnum", "Number of AP exams taken", 0,10, 0, step = 1),
+                          0, 36, 18, step = 1),
+              sliderInput("gpa", "GPA (unweighted)", 0,4, 2, step = .1),
+              sliderInput("apnum", "Number of AP exams taken", 0,10, 5, step = 1),
               sliderInput("apave", "Average AP score",
-                         0, 5, 0, step = .1),
+                         0, 5, 2.5, step = .1),
               sliderInput("sat2ave", "Average SAT Subject test score",
-                          0, 800, 0, step = 10)
+                          0, 800, 400, step = 10)
 
   )
 ,column(4,selectInput("hs","What type of high school did you attend?",
@@ -43,18 +43,18 @@ shinyUI(fluidPage(
         
 ),
 column(4, radioButtons("international","Are you a foreign national?",
-                       c("Yes"=1,"No"=0)),
+                       c("No"=0,"Yes"=1)),
        radioButtons("firstinfamily","Are you the first in your family to attend university?",
-                    c("Yes"=1,"No"=0)),
+                    c("No"=0,"Yes"=1)),
        
        radioButtons("sports","Do you play varsity athletics?",
-                    c("Yes"=1,"No"=0))                   ),
+                    c("No"=0,"Yes"=1))                   ),
        column(4, radioButtons("alum","Are you a legacy at this school?",
-                              c("Yes"=1,"No"=0)),
+                              c("No"=0,"Yes"=1)),
               radioButtons("out","Are you applying from out of state?",
-                           c("Yes"=1,"No"=0)),
+                           c("No"=0,"Yes"=1)),
               radioButtons("early","Are you applying early?",
-                           c("Yes"=1,"No"=0))))),
+                           c("No"=0,"Yes"=1))))),
 fluidRow(    column(12,align="center",selectInput("college", "What college are you applying to?",
                     c("",as.character(unique(dataunnormed$name)))),
               h2(uiOutput("headerText")),

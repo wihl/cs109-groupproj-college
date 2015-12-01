@@ -11,3 +11,6 @@ drops <- c("X","studentID","classrank","GPA_w","program","intendedgradyear","add
            "MinorityGender","firstinfamily","artist","workexp","collegeID")
 subdata<-dataunnormed[,1:27]
 subdata<-subdata[,!(names(subdata) %in% drops)]
+
+normedmeans<-read.csv("normalize_means.csv")
+normedstds<-read.csv("normalize_stds.csv")
