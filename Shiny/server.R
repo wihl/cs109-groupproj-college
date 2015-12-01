@@ -5,6 +5,7 @@ require(reshape2)
 require(plyr)
 library(randomForest)
 library(ggvis)
+library(jsonlite)
 
 
 # Define server logic
@@ -21,39 +22,81 @@ shinyServer(function(input, output, session) {
   output$headerText <- renderUI({
     
     if (input$college!=""){
-    
-    #normalize
+      
+    #translate SAT and ACT to combined score
+    if (as.numeric(input$act)==0)
+    {at = as.numeric(input$satcrm) + as.numeric(input$satw)}
+    else if (as.numeric(input$satcrm)==0)
+    {
+      #convert act to sat
+      at = act2sat$sat[act2sat$act==as.numeric(input$act)] + as.numeric(input$satw)}
+    else
+    {at = max(act2sat$sat[act2sat$act==as.numeric(input$act)],as.numeric(input$satcrm)) + as.numeric(input$satw)}
+    #normalize against test data
     gpa_normed<-(as.integer(input$gpa) - mean(dataunnormed$GPA))/(max(dataunnormed$GPA)-min(dataunnormed$GPA))
-    at_normed<-(as.integer(input$sat) - mean(dataunnormed$admissionstest,na.rm=TRUE))/(max(dataunnormed$admissionstest,na.rm=TRUE)-min(dataunnormed$admissionstest,na.rm=TRUE))
+    at_normed<-(at - mean(dataunnormed$admissionstest,na.rm=TRUE))/(max(dataunnormed$admissionstest,na.rm=TRUE)-min(dataunnormed$admissionstest,na.rm=TRUE))
     apave_normed<-(as.integer(input$apave) - mean(dataunnormed$averageAP,na.rm=TRUE))/(max(dataunnormed$averageAP,na.rm=TRUE)-min(dataunnormed$averageAP,na.rm=TRUE))
     sat2ave_normed<-(as.integer(input$sat2ave) - mean(dataunnormed$SATsubject,na.rm=TRUE))/(max(dataunnormed$SATsubject,na.rm=TRUE)-min(dataunnormed$SATsubject,na.rm=TRUE))
     
-    #process
+    #process values into boolean
     if (as.integer(input$race)>0)
       {race = 1}
     else {race=0}
     if (as.integer(input$hs)>0)
     {hs = 1}
     else {hs=0}
+    if (as.integer(input$gender)>0)
+    {fem = 1}
+    else {fem=0}
     
     
-    
-    testdata<-data.frame(GPA=gpa_normed,admissionstest=at_normed,AP = as.numeric(input$apnum), averageAP = apave_normed,
-                         SATsubject = sat2ave_normed, 
-                         schooltype = hs, female=as.numeric(input$gender),
-                         MinorityGender=as.numeric(input$gender), MinorityRace = race,
-                          international = as.numeric(input$international),
-                          sports = as.numeric(input$sports), earlyAppl = as.numeric(input$early),
-                          alumni=as.numeric(input$alum),outofstate=as.numeric(input$out),
-                              acceptrate=data$acceptrate[data$name==input$college][1], 
-                              size = data$size[data$name==input$college][1], public = data$public[data$name==input$college][1],
-                         finAidPct = data$finAidPct[data$name==input$college][1], instatePct =data$instatePct[data$name==input$college][1] )
+    #gather data for prediction
+    pred = data.frame(admissionstest=numeric(0),
+                      AP=numeric(0),
+                      averageAP=numeric(0),
+                      SATsubject=numeric(0),
+                      GPA=numeric(0),
+                      schooltype=numeric(0),
+                      intendedgradyear=numeric(0),
+                      female=numeric(0),
+                      MinorityRace=numeric(0),
+                      international=numeric(0),
+                      sports=numeric(0),
+                      earlyAppl=numeric(0),
+                      alumni=numeric(0),
+                      outofstate=numeric(0),
+                      acceptrate=numeric(0),
+                      size=numeric(0),
+                      public=numeric(0),
+                      finAidPct=numeric(0),
+                      instatePct=numeric(0))
 
-    prediction<-predict(rf,newdata=testdata,type="prob")
+    pred[1,] = list(at_normed,  as.numeric(input$apnum), apave_normed,   sat2ave_normed,
+                    gpa_normed,   hs,   2019,   fem,
+                    race,   as.numeric(input$international),   as.numeric(input$sports),   as.numeric(input$early),
+                    as.numeric(input$alum),   as.numeric(input$out),   
+                    datanormed$acceptrate[datanormed$name==input$college][1],   
+                    datanormed$size[datanormed$name==input$college][1],
+                    datanormed$public[datanormed$name==input$college][1],   
+                    datanormed$finAidPct[datanormed$name==input$college][1],   
+                    0.00000000e+00)
     
+    # create query string
+    qs = paste0(colnames(pred),"=",pred[1,],collapse="&")
+    server = "http://127.0.0.1:5000/predict"
+    server = "http://mypythonapp-wihl.rhcloud.com/predict"
+    
+    URL = paste0(server,"?",qs)
+    
+    js  = fromJSON(URL)
+    df = js$preds
+    df$college = as.factor(df$college)
+    
+    
+    #report
     str1 <- paste("<p>Our algorithm predicts you have a<br>")
     str2 <- paste("percent chance of getting in to")
-    HTML(str1,prediction[2]*100,str2,input$college)}
+    HTML(str1,100*df$prob[df$college==input$college],str2,input$college)}
        
      })
   
@@ -63,7 +106,7 @@ shinyServer(function(input, output, session) {
     if (input$college!=""){
       
       createAlert(session, "alert", "Alert", title = "This prediction is not a guarantee of admission.", 
-                  "This website is experimental. We are simply interested in exploring how application factors affect college admissions.", append = FALSE);
+                  "We are simply interested in exploring how application factors affect college admissions. Our algorithm is 74% accurate.", append = FALSE);
       
       
     ggplot(data=importdf,aes(y=MeanDecreaseGini,x=reorder,fill=MeanDecreaseGini))+
@@ -80,7 +123,7 @@ shinyServer(function(input, output, session) {
   
   output$importancehelper <-renderUI({
     if (input$college!=""){
-    HTML("This plot shows the relative importance of various parts of the application. In other words, when we train a model to predict your chance of admission, it weights the different aspects of your application according to these importances. Notice that admissionstest, which codes your SAT score, plays the largest role in determining your chances of acceptance.")
+    HTML("This plot shows the relative importance of various parts of the application. In other words, when we train a model to predict your chance of admission, it weights the different aspects of your application according to these importances. Notice that admissionstest, which codes your SAT and ACT scores, plays the largest role in determining your chances of acceptance.")
     }
       })
   
@@ -92,15 +135,17 @@ shinyServer(function(input, output, session) {
       xvar_name <- colnames(subdata)[colnames(subdata) == input$xvar]
       yvar_name <- colnames(subdata)[colnames(subdata) == input$yvar]
       
-      # Normally we could do something like props(x = ~BoxOffice, y = ~Reviews),
+      # Normally we could do something like props(x = ~GPA, y = ~admissionstest),
       # but since the inputs are strings, we need to do a little more work.
       xvar <- prop("x", as.symbol(input$xvar))
       yvar <- prop("y", as.symbol(input$yvar))
       
       if (input$college!='')
-      {graphdata = data[data$name==input$college,]}
+      {graphdata = dataunnormed[dataunnormed$name==input$college,]
+      graphdata$acceptStatus[graphdata$acceptStatus==-1]<-0}
       else
-      {graphdata = subdata}
+      {graphdata = dataunnormed
+      graphdata$acceptStatus[graphdata$acceptStatus==-1]<-0}
       
       
       graphdata %>%
@@ -112,8 +157,8 @@ shinyServer(function(input, output, session) {
         add_axis("x", title = xvar_name) %>%
         add_axis("y", title = yvar_name) %>%
         add_legend("stroke", title = "Accepted", values = c("Yes", "No")) %>%
-        scale_nominal("stroke", domain = c("Yes", "No"),
-                      range = c("blue", "#aaa")) %>%
+        #scale_nominal("stroke", domain = c("Yes", "No"),
+                      #range = c("blue", "#aaa")) %>%
         set_options(width = 500, height = 500)
       
     
