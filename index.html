@@ -80,7 +80,6 @@
         function includeContent(file) {
             URL = window.location.href;
 	    URL = URL.substring(0, URL.lastIndexOf("/") + 1) + file;
-	    alert(URL);
 	    $(function(){
 	      $("#includedContent").load(URL); 
 	    });
