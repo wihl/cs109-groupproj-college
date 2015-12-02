@@ -12,12 +12,6 @@ Current Project status: [Trello Board](https://trello.com/b/eQLW599s)
 
 Discussions: [Slack Domain](https://team-ivy.slack.com)
 
-#### Things in Markdown that haven't been put into chapters yet:
-
-[Project Resources](Resources.md)
-
-[Dependencies and Libraries](Dependencies.md)
-
 ##### Getting R to work in iPython
 
 First, install R extension
