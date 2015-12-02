@@ -76,6 +76,20 @@
         }
     </script>
     -->
+    <script> 
+        function includeContent(file) {
+            URL = window.location.href;
+	    URL = URL.substring(0, URL.lastIndexOf("/") + 1) + file;
+ 	    alert(URL);
+	    $(function(){
+	      $("#includedContent").load(URL); 
+	    });
+
+        }
+	$(document).ready(function() {
+	    includeContent("teamivy.html")
+	});
+    </script> 
   </head>
   <body>
     <div align="center">
@@ -112,8 +126,10 @@
                     </tr> </tbody> </table>
                 </form>
                 <br>
-                    <div width="100%" height="25000px">
+                    <div id="includedContent">
+                        <!--
                         <iframe id="myiframe" same_height_as="contentWindow" name="myiframe" src="teamivy.html"></iframe>
+			-->
                     </div>
                 </br>
                 <form id="nav" class="form-horizontal">
