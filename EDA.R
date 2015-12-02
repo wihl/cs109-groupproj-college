@@ -49,6 +49,17 @@ table(df$canAfford,df$acceptStatus)
 214 / (214 + 364)
 # yes = both at 37%
 
+
+nonAccNonMin = sqldf("select collegeID,  avg(admissionstest) as a from df where MinorityRace != 1 and acceptStatus != 1 group by collegeID order by collegeID")
+AccMin = sqldf("select collegeID,  avg(admissionstest) as a from df where MinorityRace = 1 and acceptStatus = 1 group by collegeID order by collegeID")
+AccMaj = sqldf("select collegeID,  avg(admissionstest) as a from df where MinorityRace != 1 and acceptStatus = 1 group by collegeID order by collegeID")
+minor = cbind(college = lapply(AccMin$collegeID,as.character), avgAcceptedMinority = AccMin$a, avgRejectedNonMinority = nonAccNonMin$a, avgAcceptedNonMinority = AccMaj$a)
+
+df.minor = data.frame(minor)
+SATdiff = as.numeric(df.minor$avgAcceptedNonMinority) - as.numeric(df.minor$avgAcceptedMinority)
+df.satdiff = cbind(college=df.minor$college, SATdiff = SATdiff)
+
+
 # can't afford it but still got in
 sqldf("select collegeID,  cast(sum((canAfford=-1) and (acceptStatus=1)) as float)/count(*) as ratio from df group by collegeID order by ratio")
 
