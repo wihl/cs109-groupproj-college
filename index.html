@@ -62,6 +62,7 @@
        }
     </style>
     <!-- Code should get rid of double scrollbars but doesn't -->
+    <!-- 
     <script type ="text/javascript">
         function autoResize(id){
             var doc=document.getElementById(id).contentWindow.document;
@@ -74,6 +75,7 @@
             document.getElementById(id).style.width=width;
         }
     </script>
+    -->
   </head>
   <body>
     <div align="center">
@@ -99,32 +101,32 @@
                     <table class="table"> <tbody> <tr>
                         <td> <label class="control-label"> <font size=3> Select chapter: </font> </label> </td>
                         <td> <select id="topnav" class="form-control" onchange="document.getElementById('myiframe').src = this.options[this.selectedIndex].value;document.getElementById('botnav').options[this.options.selectedIndex].selected = true;">
-                            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb">Preface</option>
-                            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/database.ipynb">Chapter 1 - Data Model and Database Implementation</option>
-                            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/scrape/collegedata/Scraping%20Collegedata_MultipleRender.ipynb">Chapter 2 - Scraping Data</option>
-                            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/normalize.ipynb"> Chapter 3 - Normalization of the Data</option>
-                            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/classification_v2.ipynb">Chapter 4 - Classification and Prediction</option>
-                            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/website.ipynb">Chapter 7 - The Public Website</option>
-                            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/build_deploy.ipynb">Appendix B - Build and Deploy Notes</option>
+                            <option value="teamivy.html">Preface</option>
+                            <option value="database.html">Chapter 1 - Data Model and Database Implementation</option>
+                            <option value="ScrapingCollegedata_MultipleRender.html">Chapter 2 - Scraping Data</option>
+                            <option value="normalize.html"> Chapter 3 - Normalization of the Data</option>
+                            <option value="classification_v2.html">Chapter 4 - Classification and Prediction</option>
+                            <option value="website.html">Chapter 7 - The Public Website</option>
+                            <option value="build_deploy.html">Appendix B - Build and Deploy Notes</option>
                         </select> </td>
                     </tr> </tbody> </table>
                 </form>
                 <br>
-                    <div width="100%" height="100%">
-                        <iframe id="myiframe" same_height_as="contentWindow" name="myiframe" src="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb"></iframe>
+                    <div width="100%" height="25000px">
+                        <iframe id="myiframe" same_height_as="contentWindow" name="myiframe" src="teamivy.html"></iframe>
                     </div>
                 </br>
                 <form id="nav" class="form-horizontal">
                     <table class="table"> <tbody> <tr>
                         <td> <label class="control-label"><font size=3> Select chapter: </font></label> </td>
                         <td> <select id="botnav" class="form-control" onchange="document.getElementById('myiframe').src = this.options[this.selectedIndex].value;document.getElementById('topnav').options[this.options.selectedIndex].selected = true;">
-                            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/teamivy.ipynb">Preface</option>
-                            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/database.ipynb">Chapter 1 - Data Model and Database Implementation</option>
-                            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/scrape/collegedata/Scraping%20Collegedata_MultipleRender.ipynb">Chapter 2 - Scraping Data</option>
-                            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/normalize.ipynb"> Chapter 3 - Normalization of the Data</option>
-                            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/classification_v2.ipynb">Chapter 4 - Classification and Prediction</option>
-                            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/website.ipynb">Chapter 7 - The Public Website</option>
-                            <option value="http://nbviewer.ipython.org/github/wihl/cs109-groupproj-college/blob/master/build_deploy.ipynb">Appendix B - Build and Deploy Notes</option>
+                            <option value="teamivy.html">Preface</option>
+                            <option value="database.html">Chapter 1 - Data Model and Database Implementation</option>
+                            <option value="ScrapingCollegedata_MultipleRender.html">Chapter 2 - Scraping Data</option>
+                            <option value="normalize.html"> Chapter 3 - Normalization of the Data</option>
+                            <option value="classification_v2.html">Chapter 4 - Classification and Prediction</option>
+                            <option value="website.html">Chapter 7 - The Public Website</option>
+                            <option value="build_deploy.html">Appendix B - Build and Deploy Notes</option>
                         </select> </td>
                     </tr> </tbody> </table>
                 </form>
