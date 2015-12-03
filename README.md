@@ -8,9 +8,11 @@ If you are a student and want to try our predictions visit [http://www.chanceme.
 
 If you want to learn how the site was built, visit [The Project Website](http://wihl.github.io/cs109-groupproj-college/)
 
-Current Project status: [Trello Board](https://trello.com/b/eQLW599s)
+[Project Dependencies and non-standard libraries](references.ipynb#dependencies)
 
-Discussions: [Slack Domain](https://team-ivy.slack.com)
+Current Project status: [Trello Board](https://trello.com/b/eQLW599s) (private)
+
+Discussions: [Slack Domain](https://team-ivy.slack.com) (private)
 
 # git Notes
 
