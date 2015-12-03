@@ -18,20 +18,20 @@ logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(name)s - %(level
  
 
 ws_cols = ["admissionstest","AP","averageAP","SATsubject","GPA","schooltype",
-                  "intendedgradyear","female","MinorityRace","international","sports",
+                  "female","MinorityRace","international","sports",
                   "earlyAppl","alumni","outofstate"]
-predictor_cols = ws_cols + ["acceptrate","size","public","finAidPct","instatePct"]
-NUM_ESTIMATORS = 50
+college_cols = ["acceptrate","size","public","finAidPct","instatePct"]
+predictor_cols = ws_cols + college_cols
+
+cols_to_drop = ['classrank', 'canAfford', 'firstinfamily', 'artist', 'workexp', 'visited', 'acceptProb',
+                'addInfo','intendedgradyear']
+NUM_ESTIMATORS = 1000
 
 colleges = ti.College()
 
 def load_classifier():
     global clf
-    df = pd.read_csv(os.path.join(os.path.dirname(__file__),"collegedata_normalized.csv"))
-    cols_to_drop = []
-    for i in df.columns:
-        if 1.0* df[i].isnull().sum() / len(df[i]) >= 0.5:
-            cols_to_drop.append(i)
+    df = pd.read_csv(os.path.join(os.path.dirname(__file__),"collegedata_normalized.csv"), index_col=0)
     dfr = df.drop(cols_to_drop,axis=1)
     dfr = dfr[pd.notnull(df["acceptStatus"])]
     dfpredict = dfr[predictor_cols]
@@ -40,20 +40,23 @@ def load_classifier():
     imp.fit(dfpredict)
     X = imp.transform(dfpredict)
     y = dfresponse
-    clf = RandomForestClassifier(n_estimators=NUM_ESTIMATORS)
+    clf = RandomForestClassifier(n_estimators=NUM_ESTIMATORS, criterion="gini")
     clf.fit(X,y)
     return clf
 
 def genPredictionList(vals):
+    """
+    vals (coming from the request arguments) is a list of tuples [('name1','val1'),('name2','val2')...]
+    """
     global ws_cols
     global clf
     global colleges
+    X = pd.Series(dict((name, float(val)) for name, val in vals))
     if clf is None: load_classifier()
     preds = []
-    X = np.array(vals)
     for i, row in colleges.df.iterrows():
-        X_prime = np.append(X, row[-5:]) # take the last 5 columns of the Colleges dataframe 
-        y = clf.predict_proba(X_prime)[0][1]
+        X[college_cols] = row[college_cols]
+        y = clf.predict_proba(X[predictor_cols])[0][1]
         p = {'college':row.collegeID, 'prob':y}
         preds.append(p)
     return preds
@@ -65,16 +68,10 @@ def hello_world():
 
 @app.route("/predict")
 def predict():
-    vals = []
-    # NOTE: this is pretty fragile. It assumes that the order of the querystring parameters is the same
-    #       and that all parameters are present. If this was production code, it would not be written this way.
-    for i in ws_cols:
-        vals.append( float(request.args.get(i)))
-    preds = genPredictionList(vals)
+    preds = genPredictionList(request.args.iteritems())
     return jsonify(preds = preds)
 
 
 if __name__ == '__main__':
-    load_classifier()
     app.run(debug=True)
 
