@@ -51,7 +51,6 @@ def genPredictionList(vals):
     global ws_cols
     global clf
     global colleges
-    print vals
     X = pd.Series(dict((name, float(val)) for name, val in vals))
     if clf is None: load_classifier()
     preds = []
