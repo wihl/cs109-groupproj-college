@@ -3,6 +3,7 @@ library(shinyBS)
 require(ggplot2)
 require(reshape2)
 require(plyr)
+require(curl)
 library(randomForest)
 library(ggvis)
 library(jsonlite)
@@ -33,10 +34,10 @@ shinyServer(function(input, output, session) {
     else
     {at = max(act2sat$sat[act2sat$act==as.numeric(input$act)],as.numeric(input$satcrm)) + as.numeric(input$satw)}
     #normalize against test data
-    gpa_normed<-(as.integer(input$gpa) - normedmeans$GPA)/normedstds$GPA
+    gpa_normed<-(as.numeric(input$gpa) - normedmeans$GPA)/normedstds$GPA
     at_normed<-(at - normedmeans$admissionstest)/normedstds$admissionstest
-    apave_normed<-(as.integer(input$apave) - normedmeans$averageAP)/normedstds$averageAP
-    sat2ave_normed<-(as.integer(input$sat2ave) - normedmeans$SATsubject)/normedstds$SATsubject
+    apave_normed<-(as.numeric(input$apave) - normedmeans$averageAP)/normedstds$averageAP
+    sat2ave_normed<-(as.numeric(input$sat2ave) - normedmeans$SATsubject)/normedstds$SATsubject
     
     #process values into boolean
     if (as.integer(input$race)>0)
