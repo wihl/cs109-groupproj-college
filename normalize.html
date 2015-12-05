@@ -190,7 +190,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">TIdatabase</span> <span class="kn">as</span> <span class="nn">ti</span>
@@ -215,7 +215,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">colleges</span> <span class="o">=</span> <span class="n">ti</span><span class="o">.</span><span class="n">College</span><span class="p">()</span>
@@ -228,7 +228,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">students</span> <span class="o">=</span> <span class="n">ti</span><span class="o">.</span><span class="n">Student</span><span class="p">()</span>
@@ -242,7 +242,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">applForm</span> <span class="o">=</span> <span class="n">ti</span><span class="o">.</span><span class="n">ApplForm</span><span class="p">()</span>
@@ -256,7 +256,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Merge all three tables into a single dataframe</span>
@@ -273,7 +273,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -701,7 +701,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">applications</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">&quot;collegedata_unnormalized.csv&quot;</span><span class="p">)</span>
@@ -714,12 +714,12 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">print</span> <span class="n">applications</span><span class="o">.</span><span class="n">columns</span>
 
-<span class="n">cols_to_norm</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;admissionstest&#39;</span><span class="p">,</span> <span class="s">&#39;averageAP&#39;</span><span class="p">,</span> <span class="s">&#39;SATsubject&#39;</span><span class="p">,</span> <span class="s">&#39;GPA&#39;</span><span class="p">,</span> <span class="s">&#39;GPA_w&#39;</span><span class="p">]</span>
+<span class="n">cols_to_norm</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;admissionstest&#39;</span><span class="p">,</span> <span class="s">&#39;averageAP&#39;</span><span class="p">,</span> <span class="s">&#39;GPA&#39;</span><span class="p">,</span> <span class="s">&#39;GPA_w&#39;</span><span class="p">]</span>
 <span class="n">indicator_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;schooltype&quot;</span><span class="p">,</span><span class="s">&quot;canAfford&quot;</span><span class="p">,</span><span class="s">&quot;female&quot;</span><span class="p">,</span><span class="s">&quot;MinorityGender&quot;</span><span class="p">,</span><span class="s">&quot;MinorityRace&quot;</span><span class="p">,</span><span class="s">&quot;international&quot;</span><span class="p">,</span><span class="s">&quot;firstinfamily&quot;</span><span class="p">,</span><span class="s">&quot;sports&quot;</span><span class="p">,</span><span class="s">&quot;artist&quot;</span><span class="p">,</span><span class="s">&quot;workexp&quot;</span><span class="p">,</span><span class="s">&quot;earlyAppl&quot;</span><span class="p">,</span><span class="s">&quot;visited&quot;</span><span class="p">,</span><span class="s">&quot;alumni&quot;</span><span class="p">,</span><span class="s">&quot;outofstate&quot;</span><span class="p">,</span><span class="s">&quot;acceptStatus&quot;</span><span class="p">,</span><span class="s">&quot;public&quot;</span><span class="p">]</span>
 
 <span class="n">meandict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -751,8 +751,8 @@ div#notebook {
        u&apos;name&apos;, u&apos;acceptrate&apos;, u&apos;size&apos;, u&apos;public&apos;, u&apos;finAidPct&apos;,
        u&apos;instatePct&apos;],
       dtype=&apos;object&apos;)
-{&apos;averageAP&apos;: 4.249003971472805, &apos;admissionstest&apos;: 2143.606872126258, &apos;GPA&apos;: 3.838660991674003, &apos;SATsubject&apos;: 2.5766745370945694, &apos;GPA_w&apos;: 4.317342819580864}
-{&apos;averageAP&apos;: 0.7032275578051195, &apos;admissionstest&apos;: 174.5042600523976, &apos;GPA&apos;: 0.20553017343332664, &apos;SATsubject&apos;: 1.3079581581168123, &apos;GPA_w&apos;: 0.38354906227331065}
+{&apos;averageAP&apos;: 4.249003971472805, &apos;admissionstest&apos;: 2143.606872126258, &apos;GPA&apos;: 3.838660991674003, &apos;GPA_w&apos;: 4.317342819580864}
+{&apos;averageAP&apos;: 0.7032275578051195, &apos;admissionstest&apos;: 174.5042600523976, &apos;GPA&apos;: 0.20553017343332664, &apos;GPA_w&apos;: 0.38354906227331065}
 </pre>
 </div>
 </div>
@@ -763,7 +763,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c">#http://stackoverflow.com/questions/10373247/how-do-i-write-a-python-dictionary-to-a-csv-file</span>
@@ -786,7 +786,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Now normalize specific columns</span>
@@ -826,7 +826,7 @@ div#notebook {
 </div>
 </div>
 
-<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -878,7 +878,7 @@ div#notebook {
       <td>0.838909</td>
       <td>7</td>
       <td>1.067927</td>
-      <td>0.323654</td>
+      <td>3</td>
       <td>-0.188104</td>
       <td>0.059072</td>
       <td>Biomedical engineering</td>
@@ -915,7 +915,7 @@ div#notebook {
       <td>0.666993</td>
       <td>7</td>
       <td>0.661638</td>
-      <td>-0.440897</td>
+      <td>2</td>
       <td>0.493061</td>
       <td>0.398012</td>
       <td>Classics</td>
@@ -952,7 +952,7 @@ div#notebook {
       <td>0.208552</td>
       <td>0</td>
       <td>NaN</td>
-      <td>0.323654</td>
+      <td>3</td>
       <td>0.395752</td>
       <td>-1.035963</td>
       <td>Biological Science</td>
@@ -989,7 +989,7 @@ div#notebook {
       <td>1.297350</td>
       <td>7</td>
       <td>0.864783</td>
-      <td>1.088204</td>
+      <td>4</td>
       <td>0.103824</td>
       <td>-0.384156</td>
       <td>Physics</td>
@@ -1026,7 +1026,7 @@ div#notebook {
       <td>0.323162</td>
       <td>1</td>
       <td>-0.354087</td>
-      <td>-0.440897</td>
+      <td>2</td>
       <td>0.541716</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1063,7 +1063,7 @@ div#notebook {
       <td>0.323162</td>
       <td>0</td>
       <td>NaN</td>
-      <td>-0.440897</td>
+      <td>2</td>
       <td>0.784989</td>
       <td>NaN</td>
       <td>Political Science</td>
@@ -1100,7 +1100,7 @@ div#notebook {
       <td>0.724298</td>
       <td>0</td>
       <td>NaN</td>
-      <td>-0.440897</td>
+      <td>2</td>
       <td>0.298443</td>
       <td>0.215506</td>
       <td>Computer Science</td>
@@ -1137,7 +1137,7 @@ div#notebook {
       <td>-2.542098</td>
       <td>3</td>
       <td>-0.828092</td>
-      <td>-0.440897</td>
+      <td>2</td>
       <td>-0.674650</td>
       <td>-0.305940</td>
       <td>NaN</td>
@@ -1174,7 +1174,7 @@ div#notebook {
       <td>-0.020669</td>
       <td>7</td>
       <td>-0.354087</td>
-      <td>-1.969998</td>
+      <td>0</td>
       <td>0.493061</td>
       <td>-0.983819</td>
       <td>Business</td>
@@ -1211,7 +1211,7 @@ div#notebook {
       <td>-0.135280</td>
       <td>4</td>
       <td>0.001416</td>
-      <td>-0.440897</td>
+      <td>2</td>
       <td>0.784989</td>
       <td>1.779843</td>
       <td>Computer Science</td>
@@ -1254,7 +1254,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">applications</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">&quot;collegedata_normalized.csv&quot;</span><span class="p">)</span>
