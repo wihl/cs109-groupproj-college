@@ -20,7 +20,7 @@ logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(name)s - %(level
 ws_cols = ["admissionstest","AP","averageAP","SATsubject","GPA","schooltype",
                   "female","MinorityRace","international","sports",
                   "earlyAppl","alumni","outofstate"]
-college_cols = ["acceptrate","size","public","finAidPct","instatePct"]
+college_cols = ["acceptrate","size","public"]
 predictor_cols = ws_cols + college_cols
 
 cols_to_drop = ['classrank', 'canAfford', 'firstinfamily', 'artist', 'workexp', 'visited', 'acceptProb',
