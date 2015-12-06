@@ -25,19 +25,20 @@ shinyServer(function(input, output, session) {
     if (input$college!=""){
       
     #translate SAT and ACT to combined score
-    if (as.numeric(input$act)==0)
-    {at = as.numeric(input$satcrm) + as.numeric(input$satw)}
-    else if (as.numeric(input$satcrm)==0)
+    if (as.numeric(input$act)==0 && as.numeric(input$sat)!=0)
+    {at = as.numeric(input$sat)}
+    else if (as.numeric(input$sat)==0 && as.numeric(input$act)!=0)
     {
       #convert act to sat
-      at = act2sat$sat[act2sat$act==as.numeric(input$act)] + as.numeric(input$satw)}
+      at = act2sat$sat[act2sat$act==as.numeric(input$act)]}
     else
-    {at = max(act2sat$sat[act2sat$act==as.numeric(input$act)],as.numeric(input$satcrm)) + as.numeric(input$satw)}
+    {at = 0}
     #normalize against test data
     gpa_normed<-(as.numeric(input$gpa) - normedmeans$GPA)/normedstds$GPA
     at_normed<-(at - normedmeans$admissionstest)/normedstds$admissionstest
     apave_normed<-(as.numeric(input$apave) - normedmeans$averageAP)/normedstds$averageAP
-    sat2ave_normed<-(as.numeric(input$sat2ave) - normedmeans$SATsubject)/normedstds$SATsubject
+    #sat2ave_normed<-(as.numeric(input$sat2ave) - normedmeans$SATsubject)/normedstds$SATsubject
+    
     
     #process values into boolean
     if (as.integer(input$race)>0)
@@ -49,16 +50,16 @@ shinyServer(function(input, output, session) {
     if (as.integer(input$gender)>0)
     {fem = 1}
     else {fem=0}
+    if (input$apnum==0)
+    {apave_normed=0}
     
     
-    #gather data for prediction
     pred = data.frame(admissionstest=numeric(0),
                       AP=numeric(0),
                       averageAP=numeric(0),
                       SATsubject=numeric(0),
                       GPA=numeric(0),
                       schooltype=numeric(0),
-                      intendedgradyear=numeric(0),
                       female=numeric(0),
                       MinorityRace=numeric(0),
                       international=numeric(0),
@@ -68,23 +69,21 @@ shinyServer(function(input, output, session) {
                       outofstate=numeric(0),
                       acceptrate=numeric(0),
                       size=numeric(0),
-                      public=numeric(0),
-                      finAidPct=numeric(0),
-                      instatePct=numeric(0))
+                      public=numeric(0))
 
-    pred[1,] = list(at_normed,  as.numeric(input$apnum), apave_normed,   sat2ave_normed,
-                    gpa_normed,   hs,   2019,   fem,
+
+    pred[1,] = list(at_normed,  as.numeric(input$apnum), apave_normed,   input$sat2ave,
+                    gpa_normed,   hs,   fem,
                     race,   as.numeric(input$international),   as.numeric(input$sports),   as.numeric(input$early),
                     as.numeric(input$alum),   as.numeric(input$out),   
                     datanormed$acceptrate[datanormed$name==input$college][1],   
                     datanormed$size[datanormed$name==input$college][1],
-                    datanormed$public[datanormed$name==input$college][1],   
-                    datanormed$finAidPct[datanormed$name==input$college][1],   
-                    0.00000000e+00)
+                    datanormed$public[datanormed$name==input$college][1])
+    
     
     # create query string
     qs = paste0(colnames(pred),"=",pred[1,],collapse="&")
-    server = "http://127.0.0.1:5000/predict"
+    
     server = "http://mypythonapp-wihl.rhcloud.com/predict"
     
     URL = paste0(server,"?",qs)
@@ -92,12 +91,14 @@ shinyServer(function(input, output, session) {
     js  = fromJSON(URL)
     df = js$preds
     df$college = as.factor(df$college)
+    #HTML(qs)
     
     
     #report
     str1 <- paste("<p>Our algorithm predicts you have a<br>")
     str2 <- paste("percent chance of getting in to")
-    HTML(str1,100*df$prob[df$college==input$college],str2,input$college)}
+    HTML(str1,100*df$prob[df$college==input$college],str2,input$college)
+    }
        
      })
   
@@ -109,8 +110,10 @@ shinyServer(function(input, output, session) {
       createAlert(session, "alert", "Alert", title = "This prediction is not a guarantee of admission.", 
                   "We are simply interested in exploring how application factors affect college admissions. Our algorithm is 74% accurate.", append = FALSE);
       
+      drops <- c("finAidPct","instatePct")
+      newimportdf<-importdf[!(rownames(importdf) %in% drops),]
       
-    ggplot(data=importdf,aes(y=MeanDecreaseGini,x=reorder,fill=MeanDecreaseGini))+
+    ggplot(data=newimportdf,aes(y=MeanDecreaseGini,x=reorder,fill=MeanDecreaseGini))+
       geom_bar(stat="identity")+coord_flip()+
       ggtitle(paste('Importance of Application Components'))+
       xlab(paste('Application Component'))+

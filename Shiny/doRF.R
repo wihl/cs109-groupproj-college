@@ -4,7 +4,7 @@ library(randomForest)
 dataset<-read.csv("collegedata_imputed.csv")
 data <-dataset[!is.na(dataset$acceptStatus),]
 data$acceptStatus = as.factor(data$acceptStatus)
-drops <- c("name","intendedgradyear","X")
+drops <- c("name","intendedgradyear","X","collegeID")
 subdata<-data[,!(names(data) %in% drops)]
 rf = randomForest(acceptStatus ~., data=subdata,ntree=100,compute_importances=TRUE)
 sum(rf$predicted==data$acceptStatus)/length(rf$predicted)

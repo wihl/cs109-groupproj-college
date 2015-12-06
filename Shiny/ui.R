@@ -16,18 +16,16 @@ shinyUI(fluidPage(
   fluidRow(column(12,align="center",
 
            wellPanel(
-              sliderInput("satcrm", "SAT score (combined math and reading portions)",
-                         0, 1600, 800, step = 10),
-              sliderInput("satw", "SAT Writing score (if applicable)",
-                          0, 800, 400, step = 10),
-              sliderInput("act", "ACT score (combined)",
+              sliderInput("sat", "SAT composite score",
+                         0, 2400, 1200, step = 10),
+              sliderInput("act", "ACT composite score",
                           0, 36, 18, step = 1),
               sliderInput("gpa", "GPA (unweighted)", 0,4, 2, step = .1),
               sliderInput("apnum", "Number of AP exams taken", 0,10, 5, step = 1),
               sliderInput("apave", "Average AP score",
                          0, 5, 2.5, step = .1),
-              sliderInput("sat2ave", "Average SAT Subject test score",
-                          0, 800, 400, step = 10)
+              sliderInput("sat2ave", "Number of SAT Subject tests taken",
+                          0, 10, 5, step = 1)
 
   )
 ,column(4,selectInput("hs","What type of high school did you attend?",
@@ -69,5 +67,5 @@ fluidRow(    column(12,align="center",selectInput("college", "What college are y
                   tags$small(paste0(
                     "Pick any two factors and explore the relationship between them."))),
               ggvisOutput("plot1")),
-              uiOutput("link"),
+              
               br()))))
