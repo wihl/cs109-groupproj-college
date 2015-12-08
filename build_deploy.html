@@ -179,6 +179,22 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="#webservice">Part 1 - The Webservice</a></li>
+<li><a href="#shiny">Part 2 - The Shiny User Interface</a></li>
+<li><a href="#squarespace">Part 3 - The Static Web Site</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a id="webservice"></a></p>
 <h2 id="Part-1---The-Webservice">Part 1 - The Webservice<a class="anchor-link" href="#Part-1---The-Webservice">&#182;</a></h2>
 </div>
 </div>
@@ -188,7 +204,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The code for the webservice can be found in the ./webservice subdirectory. This is a copy of the code running in production. The reference origin git repo is <em>not</em> in this repository. It is hosted on <a href="https://www.openshift.com/">OpenShift</a>. Ask if you want access to the production git repository.</p>
+<p>The code for the webservice can be found in the ./webservice subdirectory. This is a copy of the code running in production. The reference origin git repo is <em>not</em> in this repository. It is hosted on <a href="https://www.heroku.com/">Heroku</a>. Ask if you want access to the production git repository.</p>
 <h3 id="How-the-Webservice-Works">How the Webservice Works<a class="anchor-link" href="#How-the-Webservice-Works">&#182;</a></h3><p>The webservice is a minimal <a href="http://flask.pocoo.org/">Flask</a> application used to provide prediction probabilities for a given candidate. There is one useful entry point: <code>/predict</code> that expects the user's admissionTest, AP, etc on the query string. It will return a JSON file consisting of the probabilities of getting into each college.</p>
 <p>Sample input:</p>
 
@@ -213,7 +229,8 @@ div#notebook {
  ]
 }</code></pre>
 <h3 id="Webservice-startup">Webservice startup<a class="anchor-link" href="#Webservice-startup">&#182;</a></h3><p>Upon getting the first <code>/predict</code> request, the web service will perform the same logic as the classification iPython notebook. It loads the normalized college data, imputes missing values, and runs Scikit-Learn's Random Forest classification. The resulting classifier is kept in memory as a Python global variable to service subsequent prediction requests. There is no locking at the present time.</p>
-<h3 id="Webservice-Dependencies">Webservice Dependencies<a class="anchor-link" href="#Webservice-Dependencies">&#182;</a></h3><p>Since the webservice is running the full Pandas and Scikit-Learn stacks, these had to installed on the OpenShift cartridge. Here's what was done:</p>
+<h3 id="Webservice-Dependencies---OpenShift">Webservice Dependencies - OpenShift<a class="anchor-link" href="#Webservice-Dependencies---OpenShift">&#182;</a></h3><p>We started using OpenShift. The free account worked fine at first and then had consistent and terrible performance problems a few days before the project was due. With two days remaining, we scrambled and moved from OpenShift to Heroku. This section serves as reference (and consider it a warning to not use OpenShit ever again).</p>
+<p>Since the webservice is running the full Pandas and Scikit-Learn stacks, these had to installed on the OpenShift cartridge. Here's what was done:</p>
 <ol>
 <li>Create an OpenShift account</li>
 <li>Install the <a href="https://developers.openshift.com/en/managing-client-tools.html">client tools</a>. This will install <code>rhc</code>, the necessary local command line tool for managing OpenShift apps.</li>
@@ -234,6 +251,33 @@ div#notebook {
 </li>
 <li>At this point, you can grab the appropriate files from <code>./webservice</code> directory, notably: <code>TIdatabase.py, collegelist.csv, collegedata_normalized.csv, flaskapp.py</code>.</li>
 </ol>
+<h4 id="DevOps-Notes">DevOps Notes<a class="anchor-link" href="#DevOps-Notes">&#182;</a></h4><p>To see the logs, use <code>rhc tail -o '-n 100' mypythonapp</code></p>
+<p>Common rhc commands can be found <a href="https://developers.openshift.com/en/managing-common-rhc-commands.html">here</a></p>
+<h3 id="Webservice-Dependencies---Heroku">Webservice Dependencies - Heroku<a class="anchor-link" href="#Webservice-Dependencies---Heroku">&#182;</a></h3><p>Heroku was easier to configure since there are buildpacks available that contain the entire Condas stack with all the Scipy, Numpy, Scikit-learn dependencies. There were still numerous gotchas, mainly related to finding the right
+combination of scipy, numpy and scikit-learn versions that would all play nicely together.</p>
+<p>Heroku has a <a href="https://devcenter.heroku.com/articles/getting-started-with-python#introduction">nice walkthrough</a> about setting up a Python app in minutes. I mostly followed that, with the following changes:</p>
+<p>Add the Conda buildpack:</p>
+
+<pre><code>heroku config:add BUILDPACK_URL=https://github.com/kennethreitz/conda-buildpack.git</code></pre>
+<p>This buildpack has a broken scipy, so it was obtained from:</p>
+
+<pre><code>heroku buildpacks:set https://github.com/thenovices/heroku-buildpack-scipy</code></pre>
+<p>This version scipy is broken with the latest scikit-learn, so I had to downgrade scikit-learn. Here is our final requirements.txt file:</p>
+
+<pre><code>gunicorn==19.3.0
+psycopg2==2.6
+SQLAlchemy==1.0.4
+whitenoise==1.0.6
+Flask==0.10.1
+pandas==0.17.1
+numpy==1.9.1
+scipy==0.15.1
+scikit-learn==0.16.1
+nose==1.3.7</code></pre>
+<p>and our Procfile</p>
+
+<pre><code>web: gunicorn flaskapp:app --log-file=-</code></pre>
+<p>After the pain and suffering with OpenShift's free account, we went with the Heroku \$7/mo hobbyist dyno with the hope that the app would not go down again.</p>
 <h3 id="Programming-Notes">Programming Notes<a class="anchor-link" href="#Programming-Notes">&#182;</a></h3><p>Using the Quickstart template, the real work is done in <code>flaskapp.py</code>.</p>
 <p>Logging is off by default. To log errors from your app, use:</p>
 
@@ -242,8 +286,6 @@ div#notebook {
 logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')</code></pre>
 <p>We simply used global variables to stored information. It is also possible to use the <a href="http://flask.pocoo.org/docs/0.10/appcontext/">appcontext</a>.</p>
 <p>Note that the app can be tested locally very easily. From a local shell use: <code>python flaskapp.py</code>. It will say which address / port it is listening on when starting up.</p>
-<h3 id="DevOps-Notes">DevOps Notes<a class="anchor-link" href="#DevOps-Notes">&#182;</a></h3><p>To see the logs, use <code>rhc tail -o '-n 100' mypythonapp</code></p>
-<p>Common rhc commands can be found <a href="https://developers.openshift.com/en/managing-common-rhc-commands.html">here</a></p>
 <h3 id="Consuming-the-Webservice-from-R">Consuming the Webservice from R<a class="anchor-link" href="#Consuming-the-Webservice-from-R">&#182;</a></h3><p>Sample code to consume the webservice can be found in <code>rclient.R</code>. This simulates how the production Shiny app can invoke the webservice. An R data.frame is created with the normalized user inputted values. This is used to populate the query string of the webservice. Note that the webservice ignores the last five variables, which are specific to a given college, since probabilities for <em>all</em> colleges are returned.</p>
 <p>The returned JSON is easily parsed into an R data.frame for presentation to the user or further manipulation. Here is a snippet:</p>
 
@@ -258,10 +300,6 @@ js  = fromJSON(URL)
 df = js$preds
 df$college = as.factor(df$college)
 summary(df)</code></pre>
-<h3 id="References">References<a class="anchor-link" href="#References">&#182;</a></h3><p>Getting started with OpenShift and Python 2.7 (without Flask): <a href="https://developers.openshift.com/en/python-getting-started.html">https://developers.openshift.com/en/python-getting-started.html</a></p>
-<p>Getting started with OpenShift and Flask: <a href="https://developers.openshift.com/en/python-flask.html">https://developers.openshift.com/en/python-flask.html</a></p>
-<p>Blog post about OpenShift and Flask <a href="https://blog.openshift.com/day-3-flask-instant-python-web-development-with-python-and-openshift/">https://blog.openshift.com/day-3-flask-instant-python-web-development-with-python-and-openshift/</a></p>
-<p>Somewhat dated: <a href="https://blog.openshift.com/beginners-guide-to-writing-flask-apps-on-openshift/">https://blog.openshift.com/beginners-guide-to-writing-flask-apps-on-openshift/</a></p>
 
 </div>
 </div>
@@ -271,7 +309,8 @@ summary(df)</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Part-2---The-Shiny-App">Part 2 - The Shiny App<a class="anchor-link" href="#Part-2---The-Shiny-App">&#182;</a></h2>
+<h2 id="The-Webservice-Code">The Webservice Code<a class="anchor-link" href="#The-Webservice-Code">&#182;</a></h2><p>(This is not in a code cell because it is not meant to be executed)</p>
+
 </div>
 </div>
 </div>
@@ -280,8 +319,96 @@ summary(df)</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="http://shiny.rstudio.com/">Shiny</a> is a web application framework for R. It allows rapid development of reactive web applications. In this project, Shiny is used to implement all user interaction including plots and charts.</p>
+
+<pre><code>from flask import Flask
+from flask import jsonify, request
+
+import os
+import pandas as pd
+from sklearn.preprocessing import Imputer
+from sklearn.ensemble import RandomForestClassifier
+import numpy as np
+import logging
+
+import TIdatabase as ti
+
+app = Flask(__name__)
+
+clf = None
+logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+
+ws_cols = ["admissionstest","AP","averageAP","SATsubject","GPA","schooltype",
+                  "female","MinorityRace","international","sports",
+                  "earlyAppl","alumni","outofstate"]
+college_cols = ["acceptrate","size","public"]
+predictor_cols = ws_cols + college_cols
+
+cols_to_drop = ['classrank', 'canAfford', 'firstinfamily', 'artist', 'workexp', 'visited', 'acceptProb',
+                'addInfo','intendedgradyear']
+NUM_ESTIMATORS = 1000
+
+colleges = ti.College()
+
+def load_classifier():
+    global clf
+    df = pd.read_csv(os.path.join(os.path.dirname(__file__),"collegedata_normalized.csv"), index_col=0)
+    dfr = df.drop(cols_to_drop,axis=1)
+    dfr = dfr[pd.notnull(df["acceptStatus"])]
+    dfpredict = dfr[predictor_cols]
+    dfresponse = dfr["acceptStatus"]
+    imp = Imputer(missing_values="NaN", strategy="median", axis=1)
+    imp.fit(dfpredict)
+    X = imp.transform(dfpredict)
+    y = dfresponse
+    clf = RandomForestClassifier(n_estimators=NUM_ESTIMATORS, criterion="gini")
+    clf.fit(X,y)
+    return clf
+
+def genPredictionList(vals):
+    """
+    vals (coming from the request arguments) is a list of tuples [('name1','val1'),('name2','val2')...]
+    """
+    global ws_cols
+    global clf
+    global colleges
+    X = pd.Series(dict((name, float(val)) for name, val in vals))
+    if clf is None: load_classifier()
+    preds = []
+    for i, row in colleges.df.iterrows():
+        X[college_cols] = row[college_cols]
+        y = clf.predict_proba(X[predictor_cols])[0][1]
+        p = {'college':row.collegeID, 'prob':y}
+        preds.append(p)
+    return preds
+    #e.g.  [{'college':'harvard', 'prob':y}, {'college':'yale', 'prob':0.25}, {'college':'brown', 'prob':0.89}]
+
+@app.route('/')
+def hello_world():
+    return "Welcome to the Team Ivy Web Service"
+
+@app.route("/predict")
+def predict():
+    preds = genPredictionList(request.args.iteritems())
+    return jsonify(preds = preds)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a id="shiny"></a></p>
+<h2 id="Part-2---The-Shiny-Web-Application">Part 2 - The Shiny Web Application<a class="anchor-link" href="#Part-2---The-Shiny-Web-Application">&#182;</a></h2><p><a href="http://shiny.rstudio.com/">Shiny</a> is a web application framework for R. It allows rapid development of reactive web applications. In this project, Shiny is used to implement all user interaction including plots and charts.</p>
 <p>The Shiny app is hosted at <a href="http://www.shinyapps.io/">http://www.shinyapps.io/</a></p>
+<p>We initially attempted to implement RandomForests in R, but the results were not consistent with the Python classification code. It was at that time that we decided to implement the Python webservice.</p>
+<p>The Shiny app consists of three files:</p>
 
 </div>
 </div>
@@ -291,6 +418,323 @@ summary(df)</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><code>global.R</code> is common code for both the client and server. When doing the classification, we saved the normalization
+means and standard deviations so we could normalize user input precisely the same way. We load in those normalization values upon app startup.</p>
+
+<pre><code>## shape data for MST
+load('model.RData')
+act2sat&lt;-data.frame(sat=list(1600, 1560, 1510, 1460, 1420, 1380, 1340, 1300, 1260, 1220, 1190, 1150, 1110, 1070, 1030, 990, 950, 910, 870,
+                         830, 790, 740, 690, 640, 590, 530),act=list(36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19,
+                                                                  18, 17, 16, 15, 14, 13, 12, 11))
+
+datanormed&lt;-read.csv("collegedata_normalized.csv")
+datanormed$SATsubject&lt;-as.numeric(datanormed$SATsubject)
+
+drops &lt;- c("X","studentID","classrank","GPA_w","program","intendedgradyear","addInfo","canAfford",
+           "MinorityGender","firstinfamily","artist","workexp","collegeID")
+subdata&lt;-dataunnormed[,1:27]
+subdata&lt;-subdata[,!(names(subdata) %in% drops)]
+
+normedmeans&lt;-read.csv("normalize_means.csv")
+normedstds&lt;-read.csv("normalize_stds.csv")</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>ui.R</code> contains the user interface</p>
+
+<pre><code>library(dplyr)
+library(shiny)
+library(shinyBS)
+require(ggplot2)
+require(reshape2)
+require(plyr)
+library(randomForest)
+library(ggvis)
+
+
+
+
+shinyUI(fluidPage(
+  titlePanel("Chance me."),
+  fluidRow(column(12,align="center",
+
+           wellPanel(
+              sliderInput("sat", "SAT composite score",
+                         0, 2400, 1200, step = 10),
+              sliderInput("act", "ACT composite score",
+                          0, 36, 18, step = 1),
+              sliderInput("gpa", "GPA (unweighted)", 0,4, 2, step = .1),
+              sliderInput("apnum", "Number of AP exams taken", 0,10, 5, step = 1),
+              sliderInput("apave", "Average AP score",
+                         0, 5, 2.5, step = .1),
+              sliderInput("sat2ave", "Number of SAT Subject tests taken",
+                          0, 10, 5, step = 1)
+
+  )
+,column(4,selectInput("hs","What type of high school did you attend?",
+                        c("Public"="0","Private"="1","Parochial"="2","Homeschool"="3")),
+           radioButtons("gender","What gender do you identify as?",
+                        c("Female"="1","Male"="-1","Other"="0")),
+           selectInput("race","What ethnicity do you identify as?",
+                       c("African American/Black"="1","Hispanic/Latino"="2",
+                         "Asian"="0","Middle Eastern"="-1","Pacific Islander"="3",
+                         "Native American"="4","White"="-2","Other"="5"))
+
+
+
+),
+column(4, radioButtons("international","Are you a foreign national?",
+                       c("No"=0,"Yes"=1)),
+       radioButtons("firstinfamily","Are you the first in your family to attend university?",
+                    c("No"=0,"Yes"=1)),
+
+       radioButtons("sports","Do you play varsity athletics?",
+                    c("No"=0,"Yes"=1))                   ),
+       column(4, radioButtons("alum","Are you a legacy at this school?",
+                              c("No"=0,"Yes"=1)),
+              radioButtons("out","Are you applying from out of state?",
+                           c("No"=0,"Yes"=1)),
+              radioButtons("early","Are you applying early?",
+                           c("No"=0,"Yes"=1))))),
+fluidRow(    column(12,align="center",selectInput("college", "What college are you applying to?",
+                    c("",as.character(unique(dataunnormed$name)))),
+              h2(uiOutput("headerText")),
+              bsAlert("alert"),
+              br(),
+              h4(uiOutput("importancehelper")),
+              plotOutput("importance"),
+              br(),
+                conditionalPanel(condition="input.college!=''",wellPanel(
+                  selectInput("xvar", "X-axis variable", colnames(subdata), selected = "GPA"),
+                  selectInput("yvar", "Y-axis variable", colnames(subdata), selected = "admissionstest"),
+                  tags$small(paste0(
+                    "Pick any two factors and explore the relationship between them."))),
+              ggvisOutput("plot1")),
+
+              br()))))</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally <code>server.R</code> is the user interface back end that also invokes the webservice</p>
+
+<pre><code>library(shiny)
+library(shinyBS)
+require(ggplot2)
+require(reshape2)
+require(plyr)
+require(curl)
+library(randomForest)
+library(ggvis)
+library(jsonlite)
+
+
+# Define server logic
+shinyServer(function(input, output, session) {
+
+
+
+ observeEvent(input$goButton, {gotime&lt;-1
+  })
+
+
+
+  # get text for header
+  output$headerText &lt;- renderUI({
+
+    if (input$college!=""){
+
+    #translate SAT and ACT to combined score
+    if (as.numeric(input$act)==0 &amp;&amp; as.numeric(input$sat)!=0)
+    {at = as.numeric(input$sat)}
+    else if (as.numeric(input$sat)==0 &amp;&amp; as.numeric(input$act)!=0)
+    {
+      #convert act to sat
+      at = act2sat$sat[act2sat$act==as.numeric(input$act)]}
+    else
+    {at = 0}
+    #normalize against test data
+    gpa_normed&lt;-(as.numeric(input$gpa) - normedmeans$GPA)/normedstds$GPA
+    at_normed&lt;-(at - normedmeans$admissionstest)/normedstds$admissionstest
+    apave_normed&lt;-(as.numeric(input$apave) - normedmeans$averageAP)/normedstds$averageAP
+    #sat2ave_normed&lt;-(as.numeric(input$sat2ave) - normedmeans$SATsubject)/normedstds$SATsubject
+
+
+    #process values into boolean
+    if (as.integer(input$race)&gt;0)
+      {race = 1}
+    else {race=0}
+    if (as.integer(input$hs)&gt;0)
+    {hs = 1}
+    else {hs=0}
+    if (as.integer(input$gender)&gt;0)
+    {fem = 1}
+    else {fem=0}
+    if (input$apnum==0)
+    {apave_normed=0}
+
+
+    pred = data.frame(admissionstest=numeric(0),
+                      AP=numeric(0),
+                      averageAP=numeric(0),
+                      SATsubject=numeric(0),
+                      GPA=numeric(0),
+                      schooltype=numeric(0),
+                      female=numeric(0),
+                      MinorityRace=numeric(0),
+                      international=numeric(0),
+                      sports=numeric(0),
+                      earlyAppl=numeric(0),
+                      alumni=numeric(0),
+                      outofstate=numeric(0),
+                      acceptrate=numeric(0),
+                      size=numeric(0),
+                      public=numeric(0))
+
+
+    pred[1,] = list(at_normed,  as.numeric(input$apnum), apave_normed,   input$sat2ave,
+                    gpa_normed,   hs,   fem,
+                    race,   as.numeric(input$international),   as.numeric(input$sports),   as.numeric(input$early),
+                    as.numeric(input$alum),   as.numeric(input$out),   
+                    datanormed$acceptrate[datanormed$name==input$college][1],   
+                    datanormed$size[datanormed$name==input$college][1],
+                    datanormed$public[datanormed$name==input$college][1])
+
+
+    # create query string
+    qs = paste0(colnames(pred),"=",pred[1,],collapse="&amp;")
+
+    server = "https://boiling-forest-8250.herokuapp.com/predict"
+
+    URL = paste0(server,"?",qs)
+
+    js  = fromJSON(URL)
+    df = js$preds
+    df$college = as.factor(df$college)
+    #HTML(qs)
+
+
+    #report
+    str1 &lt;- paste("&lt;p&gt;Our algorithm predicts you have a&lt;br&gt;")
+    str2 &lt;- paste("percent chance of getting in to")
+    HTML(str1,100*df$prob[df$college==input$college],str2,input$college)
+    }
+
+     })
+
+  #echo importances
+  output$importance&lt;- renderPlot({
+
+    if (input$college!=""){
+
+      createAlert(session, "alert", "Alert", title = "This prediction is not a guarantee of admission.", 
+                  "We are simply interested in exploring how application factors affect college admissions. Our algorithm is 74% accurate.", append = FALSE);
+
+      drops &lt;- c("finAidPct","instatePct")
+      newimportdf&lt;-importdf[!(rownames(importdf) %in% drops),]
+
+    ggplot(data=newimportdf,aes(y=MeanDecreaseGini,x=reorder,fill=MeanDecreaseGini))+
+      geom_bar(stat="identity")+coord_flip()+
+      ggtitle(paste('Importance of Application Components'))+
+      xlab(paste('Application Component'))+
+      ylab(paste('Effect Size'))+
+      theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+            panel.background = element_blank(), axis.line = element_line(colour = "black"))
+    }
+
+
+  })
+
+  output$importancehelper &lt;-renderUI({
+    if (input$college!=""){
+    HTML("This plot shows the relative importance of various parts of the application. In other words, when we train a model to predict your chance of admission, it weights the different aspects of your application according to these importances. Notice that admissionstest, which codes your SAT and ACT scores, plays the largest role in determining your chances of acceptance.")
+    }
+      })
+
+
+  #echo scatterplot
+  vis&lt;- reactive({
+
+      # Lables for axes
+      xvar_name &lt;- colnames(subdata)[colnames(subdata) == input$xvar]
+      yvar_name &lt;- colnames(subdata)[colnames(subdata) == input$yvar]
+
+      # Normally we could do something like props(x = ~GPA, y = ~admissionstest),
+      # but since the inputs are strings, we need to do a little more work.
+      xvar &lt;- prop("x", as.symbol(input$xvar))
+      yvar &lt;- prop("y", as.symbol(input$yvar))
+
+      if (input$college!='')
+      {graphdata = dataunnormed[dataunnormed$name==input$college,]
+      graphdata$acceptStatus[graphdata$acceptStatus==-1]&lt;-0}
+      else
+      {graphdata = dataunnormed
+      graphdata$acceptStatus[graphdata$acceptStatus==-1]&lt;-0}
+
+
+      graphdata %&gt;%
+        ggvis(x = xvar, y = yvar) %&gt;%
+        layer_points(size := 50, size.hover := 200,
+                     fillOpacity := 0.2, fillOpacity.hover := 0.5,
+                     stroke = ~acceptStatus) %&gt;%
+        #layer_points(x = xvar, y= yvar, size := 50, fillOpacity=1,fill:="red", data = testdata)%&gt;%
+        add_axis("x", title = xvar_name) %&gt;%
+        add_axis("y", title = yvar_name) %&gt;%
+        add_legend("stroke", title = "Accepted", values = c("Yes", "No")) %&gt;%
+        #scale_nominal("stroke", domain = c("Yes", "No"),
+                      #range = c("blue", "#aaa")) %&gt;%
+        set_options(width = 500, height = 500)
+
+
+  })
+
+  vis %&gt;% bind_shiny("plot1")
+
+
+
+
+#echo link to CS109
+output$link &lt;- renderUI({
+   return(h4(p("Want to see other cool machine learning tools and projects? Visit",
+                strong(a("the Harvard CS109 homepage.", href="http://cs109.github.io")))))
+
+
+})
+
+
+
+  ## PART THREE: alert
+  output$alert &lt;- renderUI({
+
+
+        createAlert(session, "alert", "Alert", title = "This is not a guarantee of admission!", 
+                    "This website is experimental and exploratory. Feel free to toggle the settings to see how your chances might change with an extra AP class or two.", append = FALSE);
+
+  })
+
+
+})</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a id="squarespace"></a></p>
 <h2 id="Part-3---SquareSpace">Part 3 - SquareSpace<a class="anchor-link" href="#Part-3---SquareSpace">&#182;</a></h2>
 </div>
 </div>
@@ -305,18 +749,21 @@ summary(df)</code></pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre> 
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a id="references"></a></p>
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>Getting Started with Python on Heroku <a href="https://devcenter.heroku.com/articles/getting-started-with-python-o#prerequisites">https://devcenter.heroku.com/articles/getting-started-with-python-o#prerequisites</a></p>
+<p>Buildpack for Conda on Heroku <a href="https://github.com/kennethreitz/conda-buildpack">https://github.com/kennethreitz/conda-buildpack</a></p>
+<p>Getting started with OpenShift and Python 2.7 (without Flask): <a href="https://developers.openshift.com/en/python-getting-started.html">https://developers.openshift.com/en/python-getting-started.html</a></p>
+<p>Getting started with OpenShift and Flask: <a href="https://developers.openshift.com/en/python-flask.html">https://developers.openshift.com/en/python-flask.html</a></p>
+<p>Blog post about OpenShift and Flask <a href="https://blog.openshift.com/day-3-flask-instant-python-web-development-with-python-and-openshift/">https://blog.openshift.com/day-3-flask-instant-python-web-development-with-python-and-openshift/</a></p>
+<p>Somewhat dated: <a href="https://blog.openshift.com/beginners-guide-to-writing-flask-apps-on-openshift/">https://blog.openshift.com/beginners-guide-to-writing-flask-apps-on-openshift/</a></p>
 
 </div>
 </div>
-</div>
-
 </div>
     </div>
   </div>
