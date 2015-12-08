@@ -14,6 +14,11 @@
         width:50%;
         padding:10px;
       }
+      #youtubeiframe {
+         margin: 0 auto;
+         background-color: #777;
+         display:block;
+      }
       #myiframe{
         width: 100%;
         height:100%;
@@ -61,21 +66,6 @@
          font-weight: 300;
        }
     </style>
-    <!-- Code should get rid of double scrollbars but doesn't -->
-    <!--
-    <script type ="text/javascript">
-        function autoResize(id){
-            var doc=document.getElementById(id).contentWindow.document;
-            var body_ = doc.body, html_ = doc.documentElement;
-
-            var height = Math.max( body_.scrollHeight, body_.offsetHeight, html_.clientHeight, html_.scrollHeight, html_.offsetHeight );
-            var width  = Math.max( body_.scrollWidth, body_.offsetWidth, html_.clientWidth, html_.scrollWidth, html_.offsetWidth );
-
-            document.getElementById(id).style.height=height;
-            document.getElementById(id).style.width=width;
-        }
-    </script>
-    -->
     <script>
         function includeContent(file) {
             URL = window.location.href;
@@ -99,8 +89,9 @@
                   <a id="forkme_banner" href="https://github.com/wihl/cs109-groupproj-college">View on GitHub</a>
 			            <!--h1 id="project_title">Welcome to Team Ivy's Project Page</h1-->
                   <article>
-                      <main> Welcome to Team Ivy's Project Page </main>
-                      <sub> Predicting college admissions </sub>
+                      <main> Barred Gates </main>
+		      <sub>Predicting College Admissions </sub><br>
+                      <sub> Welcome to Team Ivy's Project Page </sub>
                   </article>
                 </div>
 		      <!--/header-->
@@ -109,6 +100,7 @@
       <!-- MAIN CONTENT -->
       <div id="main_content_wrap" class="outer">
           <section id="main_content" class="inner">
+		<iframe id="youtubeiframe" width="560" height="315" src="https://www.youtube.com/embed/GlP9QU4cZ7M" frameborder="0" allowfullscreen></iframe>
                 <form id="nav" class="form-horizontal">
                     <table class="table"> <tbody> <tr>
                         <td> <label class="control-label"> <font size=3> Select chapter: </font> </label> </td>
