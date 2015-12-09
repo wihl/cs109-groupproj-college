@@ -6,7 +6,7 @@
 
 If you are a student and want to try our predictions visit [http://www.chanceme.info](http://www.chanceme.info)
 
-If you want to learn how the site was built, visit [The Project Website](http://wihl.github.io/cs109-groupproj-college/)
+If you want to learn how the site was built, visit [http://project.chanceme.info/](http://project.chanceme.info/)
 
 [Project Dependencies and non-standard libraries](references.ipynb#dependencies)
 
