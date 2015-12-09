@@ -84,7 +84,7 @@ shinyServer(function(input, output, session) {
     # create query string
     qs = paste0(colnames(pred),"=",pred[1,],collapse="&")
     
-    server = "http://mypythonapp-wihl.rhcloud.com/predict"
+    server = "https://boiling-forest-8250.herokuapp.com/predict"
     
     URL = paste0(server,"?",qs)
     

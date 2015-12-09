@@ -13,7 +13,6 @@ import TIdatabase as ti
 app = Flask(__name__)
 
 clf = None
-
 logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
  
 
