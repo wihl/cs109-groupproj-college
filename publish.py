@@ -22,8 +22,8 @@ chapter_list = [
 	['3','normalize','Normalizing'],
 	['4','EDA','Data Analysis'],
 	['5','classification_v2','Classification'],
-	['7','website','The Public Website'],
-	['8','conclusion','Conclusions and Next Steps'],
+	['6','website','The Public Website'],
+	['7','conclusion','Conclusions and Next Steps'],
 	['0','references','Appendix A - References and Dependencies'],
 	['0','build_deploy','Appendix B - Build and Deploy'],
 	]

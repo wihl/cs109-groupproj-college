@@ -91,12 +91,15 @@ shinyServer(function(input, output, session) {
     js  = fromJSON(URL)
     df = js$preds
     df$college = as.factor(df$college)
-    #HTML(qs)
+ 
+
     
     
     #report
     str1 <- paste("<p>Our algorithm predicts you have a<br>")
     str2 <- paste("percent chance of getting in to")
+    str3 <- paste("<br><br>The 95% confidence interval on this prediction is")
+    str4 <- paste("to")
     HTML(str1,100*df$prob[df$college==input$college],str2,input$college)
     }
        
@@ -113,11 +116,16 @@ shinyServer(function(input, output, session) {
       drops <- c("finAidPct","instatePct")
       newimportdf<-importdf[!(rownames(importdf) %in% drops),]
       
+     
+      
+      
     ggplot(data=newimportdf,aes(y=MeanDecreaseGini,x=reorder,fill=MeanDecreaseGini))+
       geom_bar(stat="identity")+coord_flip()+
       ggtitle(paste('Importance of Application Components'))+
       xlab(paste('Application Component'))+
       ylab(paste('Effect Size'))+
+      scale_x_discrete(labels=better_labels)+
+      guides(fill=FALSE)+
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
             panel.background = element_blank(), axis.line = element_line(colour = "black"))
     }
@@ -127,9 +135,15 @@ shinyServer(function(input, output, session) {
   
   output$importancehelper <-renderUI({
     if (input$college!=""){
-    HTML("This plot shows the relative importance of various parts of the application. In other words, when we train a model to predict your chance of admission, it weights the different aspects of your application according to these importances. Notice that admissionstest, which codes your SAT and ACT scores, plays the largest role in determining your chances of acceptance.")
+    HTML("This plot shows the relative importance of various parts of the application. In other words, when we train a model to predict your chance of admission, it weights the different aspects of your application according to these importances. Notice that SAT and ACT scores play the largest role in determining your chances of acceptance.")
     }
       })
+  
+  output$scatterhelper <-renderUI({
+    if (input$college!=""){
+      HTML("These graphs shows the relationship between an applicant's qualifications and their acceptance to",input$college,". Each dot represents a student in our data set; blue dots denote a student who was accepted.")
+    }
+  })
   
   
   #echo scatterplot
@@ -139,7 +153,7 @@ shinyServer(function(input, output, session) {
       xvar_name <- colnames(subdata)[colnames(subdata) == input$xvar]
       yvar_name <- colnames(subdata)[colnames(subdata) == input$yvar]
       
-      # Normally we could do something like props(x = ~GPA, y = ~admissionstest),
+      # Normally we could do something like props(x = ~GPA, y = ~SAT),
       # but since the inputs are strings, we need to do a little more work.
       xvar <- prop("x", as.symbol(input$xvar))
       yvar <- prop("y", as.symbol(input$yvar))
@@ -148,8 +162,8 @@ shinyServer(function(input, output, session) {
       {graphdata = dataunnormed[dataunnormed$name==input$college,]
       graphdata$acceptStatus[graphdata$acceptStatus==-1]<-0}
       else
-      {graphdata = dataunnormed
-      graphdata$acceptStatus[graphdata$acceptStatus==-1]<-0}
+      {graphdata = subdata
+      graphdata$acceptStatus<-0}
       
       
       graphdata %>%
