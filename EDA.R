@@ -12,7 +12,6 @@ mod1 = glmer(acceptStatus~MinorityRace*collegeID+(1| studentID),family="binomial
 # CHANGE acceptStatus to 0,1 instead of -1,+1
 # take exp(estimate) to make odds ratio. Or another transform to gen. probability
 
-
 # why we are doing in R and not Python: http://www.r-bloggers.com/r-vs-python-practical-data-analysis-nonlinear-regression/
 
 sumafit = aov(acceptStatus~MinorityRace*collegeID, data=df)
@@ -45,8 +44,8 @@ sqldf("select collegeID,  avg(admissionstest) as a from df group by collegeID or
 sqldf("select collegeID,  avg(admissionstest) as a from df where MinorityRace != 1 group by collegeID order by a")
 # truly needs blind?
 table(df$canAfford,df$acceptStatus)
-457 / (457 + 753)
-214 / (214 + 364)
+462 / (462 + 753)
+213 / (213 + 364)
 # yes = both at 37%
 
 # Diversity plot in Overview
@@ -74,4 +73,5 @@ satdiff.ordered = data.frame(df.satdiff[order(-SATdiff),])
 
 # can't afford it but still got in
 sqldf("select collegeID,  cast(sum((canAfford=-1) and (acceptStatus=1)) as float)/count(*) as ratio from df group by collegeID order by ratio")
+
 
