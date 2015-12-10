@@ -208,7 +208,7 @@ div#notebook {
 <h3 id="How-the-Webservice-Works">How the Webservice Works<a class="anchor-link" href="#How-the-Webservice-Works">&#182;</a></h3><p>The webservice is a minimal <a href="http://flask.pocoo.org/">Flask</a> application used to provide prediction probabilities for a given candidate. There is one useful entry point: <code>/predict</code> that expects the user's admissionTest, AP, etc on the query string. It will return a JSON file consisting of the probabilities of getting into each college.</p>
 <p>Sample input:</p>
 
-<pre><code>http://mypythonapp-wihl.rhcloud.com/predict?admissionstest=0.926899206&amp;AP=7&amp;averageAP=1.06733864&amp;SATsubject=0.324271565&amp;GPA=-0.187109979&amp;schooltype=0&amp;intendedgradyear=2017&amp;female=1&amp;MinorityRace=0&amp;international=0&amp;sports=0&amp;earlyAppl=0&amp;alumni=0&amp;outofstate=0&amp;acceptrate=0.151&amp;size=6621&amp;public=0&amp;finAidPct=0&amp;instatePct=0</code></pre>
+<pre><code>http://boiling-forest-8250.herokuapp.com/predict?admissionstest=0.926899206&amp;AP=7&amp;averageAP=1.06733864&amp;SATsubject=0.324271565&amp;GPA=-0.187109979&amp;schooltype=0&amp;intendedgradyear=2017&amp;female=1&amp;MinorityRace=0&amp;international=0&amp;sports=0&amp;earlyAppl=0&amp;alumni=0&amp;outofstate=0&amp;acceptrate=0.151&amp;size=6621&amp;public=0&amp;finAidPct=0&amp;instatePct=0</code></pre>
 <p>Sample output:</p>
 
 <pre><code>{
@@ -278,7 +278,7 @@ nose==1.3.7</code></pre>
 
 <pre><code>web: gunicorn flaskapp:app --log-file=-</code></pre>
 <p>After the pain and suffering with OpenShift's free account, we went with the Heroku \$7/mo hobbyist dyno with the hope that the app would not go down again.</p>
-<h3 id="Programming-Notes">Programming Notes<a class="anchor-link" href="#Programming-Notes">&#182;</a></h3><p>Using the Quickstart template, the real work is done in <code>flaskapp.py</code>.</p>
+<h3 id="Programming-Notes">Programming Notes<a class="anchor-link" href="#Programming-Notes">&#182;</a></h3><p>The real work is done in <code>flaskapp.py</code>.</p>
 <p>Logging is off by default. To log errors from your app, use:</p>
 
 <pre><code>import logging
@@ -292,7 +292,7 @@ logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(name)s - %(level
 <pre><code># create query string
 qs = paste0(colnames(pred),"=",pred[1,],collapse="&amp;")
 server = "http://127.0.0.1:5000/predict"
-server = "http://mypythonapp-wihl.rhcloud.com/predict"
+server = "http://boiling-forest-8250.herokuapp.com/predict"
 
 URL = paste0(server,"?",qs)
 
@@ -422,6 +422,7 @@ if __name__ == '__main__':
 means and standard deviations so we could normalize user input precisely the same way. We load in those normalization values upon app startup.</p>
 
 <pre><code>## shape data for MST
+library(dplyr)
 load('model.RData')
 act2sat&lt;-data.frame(sat=list(1600, 1560, 1510, 1460, 1420, 1380, 1340, 1300, 1260, 1220, 1190, 1150, 1110, 1070, 1030, 990, 950, 910, 870,
                          830, 790, 740, 690, 640, 590, 530),act=list(36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19,
@@ -431,12 +432,50 @@ datanormed&lt;-read.csv("collegedata_normalized.csv")
 datanormed$SATsubject&lt;-as.numeric(datanormed$SATsubject)
 
 drops &lt;- c("X","studentID","classrank","GPA_w","program","intendedgradyear","addInfo","canAfford",
-           "MinorityGender","firstinfamily","artist","workexp","collegeID")
+           "MinorityGender","firstinfamily","artist","workexp","collegeID","visited")
+dataunnormed$female[dataunnormed$female&lt;1]&lt;-0
+dataunnormed$MinorityRace[dataunnormed$MinorityRace&lt;1]&lt;-0
+dataunnormed$schooltype[dataunnormed$schooltype&lt;1]&lt;-0
+dataunnormed$earlyAppl[dataunnormed$earlyAppl&lt;1]&lt;-0
+dataunnormed$outofstate[dataunnormed$outofstate&lt;1]&lt;-0
+dataunnormed$alumni[dataunnormed$alumnil&lt;1]&lt;-0
+dataunnormed$international[dataunnormed$international&lt;1]&lt;-0
+dataunnormed$sports[dataunnormed$sports&lt;1]&lt;-0
+dataunnormed&lt;-plyr::rename(dataunnormed,c("admissionstest"= "ACT/SAT score",
+                                          "GPA"= "GPA",
+                                          "averageAP"= "average AP score",
+                                          "AP"= "# AP exams taken",
+                                          "SATsubject"= "# SAT subject tests taken",
+                                          "female"= "female indicator",
+                                          "schooltype"= "private high-school indicator",
+                                          "MinorityRace"= "minority indicator",
+                                          "earlyAppl"= "early application",
+                                          "outofstate"= "out of state indicator",
+                                          "alumni"= "alumni indicator",
+                                          "international"= "international indicator",
+                                          "sports"= "varsity sports indicator"))
 subdata&lt;-dataunnormed[,1:27]
 subdata&lt;-subdata[,!(names(subdata) %in% drops)]
 
+
 normedmeans&lt;-read.csv("normalize_means.csv")
-normedstds&lt;-read.csv("normalize_stds.csv")</code></pre>
+normedstds&lt;-read.csv("normalize_stds.csv")
+
+better_labels&lt;-c("varsity sports indicator",
+                 "international indicator",
+                 "alumni indicator",
+                 "public university indicator",
+                 "out of state indicator",
+                 "early application",
+                 "minority indicator",
+                 "private high-school indicator",
+                 "female indicator",
+                 "# SAT subject tests taken",
+                 "# AP exams taken",
+                 "college size",
+                 "average AP score",
+                 "GPA",
+                 "ACT/SAT score")</code></pre>
 
 </div>
 </div>
@@ -448,7 +487,8 @@ normedstds&lt;-read.csv("normalize_stds.csv")</code></pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>ui.R</code> contains the user interface</p>
 
-<pre><code>library(dplyr)
+<pre><code>
+library(dplyr)
 library(shiny)
 library(shinyBS)
 require(ggplot2)
@@ -503,18 +543,19 @@ column(4, radioButtons("international","Are you a foreign national?",
               radioButtons("early","Are you applying early?",
                            c("No"=0,"Yes"=1))))),
 fluidRow(    column(12,align="center",selectInput("college", "What college are you applying to?",
-                    c("",as.character(unique(dataunnormed$name)))),
+                    c("",as.character(sort(unique(dataunnormed$name))))),
               h2(uiOutput("headerText")),
               bsAlert("alert"),
               br(),
               h4(uiOutput("importancehelper")),
               plotOutput("importance"),
               br(),
+              h4(uiOutput("scatterhelper")),
                 conditionalPanel(condition="input.college!=''",wellPanel(
-                  selectInput("xvar", "X-axis variable", colnames(subdata), selected = "GPA"),
-                  selectInput("yvar", "Y-axis variable", colnames(subdata), selected = "admissionstest"),
+                  selectInput("xvar", "X-axis variable", better_labels, selected = "private high-school indicator"),
+                  selectInput("yvar", "Y-axis variable", better_labels, selected = "GPA"),
                   tags$small(paste0(
-                    "Pick any two factors and explore the relationship between them."))),
+                    "Choose different input variables to investigate how aspects of an application are related. For example, you might ask: Do private school students have better GPAs than public school students?"))),
               ggvisOutput("plot1")),
 
               br()))))</code></pre>
@@ -622,12 +663,15 @@ shinyServer(function(input, output, session) {
     js  = fromJSON(URL)
     df = js$preds
     df$college = as.factor(df$college)
-    #HTML(qs)
+
+
 
 
     #report
     str1 &lt;- paste("&lt;p&gt;Our algorithm predicts you have a&lt;br&gt;")
     str2 &lt;- paste("percent chance of getting in to")
+    str3 &lt;- paste("&lt;br&gt;&lt;br&gt;The 95% confidence interval on this prediction is")
+    str4 &lt;- paste("to")
     HTML(str1,100*df$prob[df$college==input$college],str2,input$college)
     }
 
@@ -644,11 +688,16 @@ shinyServer(function(input, output, session) {
       drops &lt;- c("finAidPct","instatePct")
       newimportdf&lt;-importdf[!(rownames(importdf) %in% drops),]
 
+
+
+
     ggplot(data=newimportdf,aes(y=MeanDecreaseGini,x=reorder,fill=MeanDecreaseGini))+
       geom_bar(stat="identity")+coord_flip()+
       ggtitle(paste('Importance of Application Components'))+
       xlab(paste('Application Component'))+
       ylab(paste('Effect Size'))+
+      scale_x_discrete(labels=better_labels)+
+      guides(fill=FALSE)+
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
             panel.background = element_blank(), axis.line = element_line(colour = "black"))
     }
@@ -658,9 +707,15 @@ shinyServer(function(input, output, session) {
 
   output$importancehelper &lt;-renderUI({
     if (input$college!=""){
-    HTML("This plot shows the relative importance of various parts of the application. In other words, when we train a model to predict your chance of admission, it weights the different aspects of your application according to these importances. Notice that admissionstest, which codes your SAT and ACT scores, plays the largest role in determining your chances of acceptance.")
+    HTML("This plot shows the relative importance of various parts of the application. In other words, when we train a model to predict your chance of admission, it weights the different aspects of your application according to these importances. Notice that SAT and ACT scores play the largest role in determining your chances of acceptance.")
     }
       })
+
+  output$scatterhelper &lt;-renderUI({
+    if (input$college!=""){
+      HTML("These graphs shows the relationship between an applicant's qualifications and their acceptance to",input$college,". Each dot represents a student in our data set; blue dots denote a student who was accepted.")
+    }
+  })
 
 
   #echo scatterplot
@@ -670,7 +725,7 @@ shinyServer(function(input, output, session) {
       xvar_name &lt;- colnames(subdata)[colnames(subdata) == input$xvar]
       yvar_name &lt;- colnames(subdata)[colnames(subdata) == input$yvar]
 
-      # Normally we could do something like props(x = ~GPA, y = ~admissionstest),
+      # Normally we could do something like props(x = ~GPA, y = ~SAT),
       # but since the inputs are strings, we need to do a little more work.
       xvar &lt;- prop("x", as.symbol(input$xvar))
       yvar &lt;- prop("y", as.symbol(input$yvar))
@@ -679,8 +734,8 @@ shinyServer(function(input, output, session) {
       {graphdata = dataunnormed[dataunnormed$name==input$college,]
       graphdata$acceptStatus[graphdata$acceptStatus==-1]&lt;-0}
       else
-      {graphdata = dataunnormed
-      graphdata$acceptStatus[graphdata$acceptStatus==-1]&lt;-0}
+      {graphdata = subdata
+      graphdata$acceptStatus&lt;-0}
 
 
       graphdata %&gt;%

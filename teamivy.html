@@ -216,10 +216,12 @@ standardized tests and study guides that offer little predictive ability into th
 <li>Constant Variance. Variances of sub-populations are all equal.</li>
 <li>Normality: sub-population of responses are Normally distributed around the estimated mean.</li>
 </ul>
-<h3 id="Caveats-and-Limitations">Caveats and Limitations<a class="anchor-link" href="#Caveats-and-Limitations">&#182;</a></h3><p>Since the only reliables sources of data we found are self-reported and unverified, we have the risk of selection bias in our analysis. This is somewhat mitigated by the volume we collected, which is approximately 5000 students with 13000 complete applications. Clearly this data is somewhat as our baseline acceptance rate is 60%, whereas the typical acceptance rates for the top 25 schools ranges from 5-26% (<a href="http://colleges.usnews.rankingsandreviews.com/best-colleges/rankings/national-universities/data">source</a>).</p>
-<p>The structured data we collected provides a narrower view of the candidate than an admissions officer would see. We are not performing any qualitative analysis. We have no input from alumni interviews or application essays. We are not interpreting significant non-academic achievements or weighing extensive extracurricular activities. Exceptional outliers candidates would not be scored accurately by this model. As an anecdote, we know of one seventeen year old student would brought electrical power to his village in India. Our model would likely predict a low admission probability even though mitigating circumstances clearly offset typical criteria like standardized test scores.</p>
-<p>We aim for a model that represents the majority of candidates based on the data we obtained and expect errors in prediction at the tails of this distribution.</p>
-<h2 id="Related-Research">Related Research<a class="anchor-link" href="#Related-Research">&#182;</a></h2><p>We attempted to find other research related to prediction of college admissions. Most research we found focused only on regression based on one or two criteria such as GPA or Standardized Test Scores. See Appendix A. We were unable to locate any academic research that predicted probabilities on the multitude of factors that we examined.</p>
+<h3 id="Caveats-and-Limitations">Caveats and Limitations<a class="anchor-link" href="#Caveats-and-Limitations">&#182;</a></h3><p>Since the only reliable sources of data we found are self-reported and unverified, we have the risk of selection bias in our analysis. This is somewhat mitigated by the volume we collected, which is approximately 5000 students with 13000 complete applications. Clearly this data is skewed as our baseline acceptance rate is 60%, whereas the typical acceptance rates for the top 25 schools ranges from 5-26% (<a href="http://colleges.usnews.rankingsandreviews.com/best-colleges/rankings/national-universities/data">source</a>). See the Data Analysis and Classification chapters for a more thorough discussion of this.</p>
+<p>The structured data we collected provides a narrower view of the candidate than an admissions officer would see. We are not performing any qualitative analysis. We have no input from alumni interviews or application essays. We are not interpreting significant non-academic achievements or weighing extensive extracurricular activities. Exceptional outliers candidates would not be scored accurately by this model. As an anecdote, we know of one seventeen year old student who brought electrical power to his village in India. Our model would likely predict a low admission probability even though mitigating circumstances in a case like this clearly offset typical criteria like standardized test scores.</p>
+<p>The skew and bias of the data affect the user experience provided by the reactive application. A user may find, for example, that increasing their SAT scores from baseline may actually <em>negatively</em> affect their admission probabilities. These unintuitive results are obviously artifacts of the lack of data provided by less-than-stellar students, but they may also capture features of applications that we are unable to quantify in the scope of this project. For example, seemingly average students may have an extraordinary story-- starting a nonprofit or playing in a professional orchestra, perhaps.</p>
+<p>We aim for a model that represents the majority of candidates based on the data we obtained and expect significant errors in prediction at the tails of this distribution.</p>
+<h2 id="Related-Research-and-Tools">Related Research and Tools<a class="anchor-link" href="#Related-Research-and-Tools">&#182;</a></h2><p>We attempted to find other research related to prediction of college admissions. Most research we found focused only on regression based on one or two criteria such as GPA or Standardized Test Scores (See Appendix A). We were unable to locate any academic research that predicted probabilities on the multitude of factors that we examined.</p>
+<p>This project is reminiscient of, but importantly extends beyond, tools such as <a href="http://www.naviance.com/">Naviance</a> and the <a href="http://www.veritasprep.com/college/application-resources/college-admissions-calculator/">Veritas Prep college admissions chances calculator</a>. Not only is our service free and non-proprietary, but we also going beyond pure binary predictions. We use the data to begin to elucidate the mechanisms underlying the admissions process. In other words, we want to understand not only <strong>whether</strong> you will be admitted, but <strong>why</strong> you will be admitted.</p>
 
 </div>
 </div>
@@ -237,6 +239,19 @@ standardized tests and study guides that offer little predictive ability into th
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
