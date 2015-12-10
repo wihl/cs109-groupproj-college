@@ -54,18 +54,19 @@ column(4, radioButtons("international","Are you a foreign national?",
               radioButtons("early","Are you applying early?",
                            c("No"=0,"Yes"=1))))),
 fluidRow(    column(12,align="center",selectInput("college", "What college are you applying to?",
-                    c("",as.character(unique(dataunnormed$name)))),
+                    c("",as.character(sort(unique(dataunnormed$name))))),
               h2(uiOutput("headerText")),
               bsAlert("alert"),
               br(),
               h4(uiOutput("importancehelper")),
               plotOutput("importance"),
               br(),
+              h4(uiOutput("scatterhelper")),
                 conditionalPanel(condition="input.college!=''",wellPanel(
-                  selectInput("xvar", "X-axis variable", colnames(subdata), selected = "GPA"),
-                  selectInput("yvar", "Y-axis variable", colnames(subdata), selected = "admissionstest"),
+                  selectInput("xvar", "X-axis variable", better_labels, selected = "private high-school indicator"),
+                  selectInput("yvar", "Y-axis variable", better_labels, selected = "GPA"),
                   tags$small(paste0(
-                    "Pick any two factors and explore the relationship between them."))),
+                    "Choose different input variables to investigate how aspects of an application are related. For example, you might ask: Do private school students have better GPAs than public school students?"))),
               ggvisOutput("plot1")),
               
               br()))))
