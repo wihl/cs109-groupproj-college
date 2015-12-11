@@ -8,11 +8,24 @@ If you are a student and want to try our predictions visit [http://www.chanceme.
 
 If you want to learn how the site was built, visit [http://project.chanceme.info/](http://project.chanceme.info/)
 
-[Project Dependencies and non-standard libraries](references.ipynb#dependencies)
-
 Current Project status: [Trello Board](https://trello.com/b/eQLW599s) (private)
 
 Discussions: [Slack Domain](https://team-ivy.slack.com) (private)
+
+#### Project Dependencies and non-standard libraries
+
+##### Visualization
+
+Tableau was used to prepare some of the visualizations. The results were then imported into iPython via embedding into `%%html` cells.
+
+SVG diagrams were built with Google Drawings
+
+##### Libraries Used
+We use a number of different libraries besides the typical ones from class (Pandas, Numpy, Sci-kit Learn, statsmodels, CSV)
+
+Flask is used a lightweight host for the public classification webservice.
+
+NLTK was used for preliminary experiments with analyzing text from College Confidential.
 
 # git Notes
 
